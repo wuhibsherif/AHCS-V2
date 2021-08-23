@@ -1,0 +1,16 @@
+{% extends 'receptionist/receptionist_dashboard.html' %}
+{% block search_result %}
+          <div class="row clearfix">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Search result</h2>
+                        </div>
+                        <div class="body">
+                          <label><a href="{%  url 'user_profile_url'  patient.id%}"> {{patient.username}} </a></label>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock search_result %}

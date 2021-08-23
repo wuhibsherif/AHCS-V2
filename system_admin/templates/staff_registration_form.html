@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+    <div class="row clearfix">
+        <form action="{% url 'add_new_user_url'%}" method="post">
+            {% csrf_token %}
+
+            <div class="card  ">
+                <div class="header bg-warning  text-white">
+                    <h2 class="text-white">Basic Information <small></small></h2>
+                </div>
+                <div class="body">
+                    <div class="row clearfix">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.firstname.errors}}
+                                <label class="ml-2">First Name</label>
+                                {{form.firstname}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.middlename.errors}}
+                                <label class="ml-2">Middle Name</label>
+                                {{form.middlename}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.lastname.errors}}
+                                <label>Last Name</label>
+                                {{form.lastname}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.age.errors}}
+                                <label>Age</label>
+                                {{form.age}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.sex.errors}}
+                                <label class="ml-2">Sex</label>
+                                {{form.sex}}
+
+                            </div>
+                        </div>
+                        {% block Speciality%}
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="ml-2">Speciality</label>
+                                <select class="form-control show-tick">
+
+                                    <option value="10">Dermatology</option>
+                                    <option value="20">Neurology</option>
+                                    <option value="30">Dentist</option>
+                                    <option value="40">Internal Medicine</option>
+                                    <option value="50">Pathology</option>
+                                    <option value="60">Obstetrics and Gynecology</option>
+                                    <option value="70">Ophthamology</option>
+                                    <option value="20">Surgery</option>
+                                </select>
+                            </div>
+                        </div>
+                        {% endblock %}
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="ml-2">Phone</label>
+                                {{form.phone}}
+                                {{form.phone.errors}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="ml-2">Email</label>
+                                {{form.email}}
+                                {{form.email.errors}}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="form-group">
+
+                                <label class="ml-2">Is Receptionist</label>
+                                {{form.is_Receptionist.errors}}
+                                {{form.is_Receptionist}}
+
+                                <label class="ml-2">Is Hospital Admin</label>
+                                {{form.is_Hospital_admin.errors}}
+                                {{form.is_Hospital_admin}}
+
+                                <label class="ml-2">Is Physician</label>
+                                {{form.is_Physician.errors}}
+                                {{form.is_Physician}}
+                                <label class="ml-2">Is Nurse</label>
+                                {{form.is_Nurse.errors}}
+                                {{form.is_Nurse}}
+                                <label class="ml-2">Is Radiologist</label>
+                                {{form.is_Radiologist.errors}}
+                                {{form.is_Radiologist}}
+                                <label class="ml-2">Is Lab technician</label>
+                                {{form.is_Lab_technician.errors}}
+                                {{form.is_Lab_technician}}
+                                <label class="ml-2">Is Pharmacist</label>
+                                {{form.is_Pharmacist.errors}}
+                                {{form.is_Pharmacist}}
+                            </div>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="card">
+                    <div class="header bg-info">
+                        <h2 class="text-white">Address Information </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    {{form.region.errors}}
+                                    {{form.region}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.zone.errors}}
+                                    <label>Zone</label>
+                                    {{form.zone}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.woreda.errors}}
+                                    <label>Woreda/Subcity</label>
+                                    {{form.woreda}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    {{form.kebele.errors}}
+                                    <label>Kebele</label>
+                                    {{form.kebele}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Gott</label>
+                                    <input class="form-control" name="gott" placeholder="Enter ..." type="text">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.house_no.errors}}
+                                    <label>House No</label>
+                                    {{form.house_no}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input class="btn btn-success" type="submit">
+                        <button class="btn btn-outline-secondary" type="submit">Cancel</button>
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+                <br>
+            </div>
+        </form>
+    </div>
+

@@ -1,0 +1,45 @@
+<div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Patient Waiting List</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example dataTable table-custom">
+                                    <thead class="thead-success">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>User Name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Age</th>
+                                            <th>Sex</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for patient in patient_waiting_list %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{patient.patient.basic.username}}</td>
+                                                <td>{{patient.patient.basic.first_name}}</td>
+                                                <td>{{patient.patient.basic.last_name}}</td>
+                                                <td>{{patient.patient.basic.middle_name}}</td>
+                                                <td>{{patient.patient.basic.age}}</td>
+                                                <td>{{patient.patient.basic.sex}}</td>
+                                                <td><a href="{% url 'patient_detail_url' patient.patient.id %}">
+                                                        <button type="button" class="btn btn-primary">Accept</button>
+                                                    </a>
+                                                </td>
+                                            <tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

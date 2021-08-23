@@ -1,0 +1,13 @@
+<!doctype html>
+{% extends 'hospital_admin/homepage.html' %}
+{% block navlist %}
+    <li class="breadcrumb-item active">user Profile</li>
+{% endblock navlist%}
+
+{% block content %}
+{% if found %}
+    {% include '../user_profile.html' %}
+{% elif notfound %}
+    {% include '../search_not_found.html' %}
+{% endif %}
+{% endblock%}

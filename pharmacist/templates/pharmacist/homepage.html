@@ -1,0 +1,42 @@
+<!doctype html>
+{% extends  'dashboard_base.html' %}
+
+{% block title %}
+    <title>AHCS Pharmacist Dashboard </title>
+{% endblock title%}
+
+{% block navheaderlist %}
+    <div class="col-lg-6 col-md-8 col-sm-12">
+        <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>{{ request.session.healthcare_name }}  Pharmacy Pharmacist Dashboard </h2>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'pharmacist_homepage_url' %}"><i class="icon-home"></i></a></li>
+            {% block navlist %}
+
+            {% endblock navlist%}
+
+        </ul>
+    </div>
+    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+            <div class="col-md-10 offset-md-2">
+                <form action="{% url 'pharmacist_search_patient_url' %}">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Type patient username here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default"><i class="icon-magnifier"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+{% endblock navheaderlist%}
+
+{% block main_menu_list%}
+
+
+{% endblock main_menu_list%}
+
+{% block content %}
+
+      <!-- /.content -->
+ {% endblock %}

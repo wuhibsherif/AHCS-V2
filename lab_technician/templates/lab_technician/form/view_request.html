@@ -1,0 +1,151 @@
+{% extends 'lab_technician/homepage.html' %}
+{% block  content%}
+    <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+                                <h3><strong>Patient Name</strong></h3>
+                                <h4 class="m-b-0"><strong>{{user_profile.basic.first_name}}</strong> {{user_profile.basic.last_name}}</h4>
+                                <span>{{ user_profile.basic.kebele }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Info</strong></h2>
+
+                        </div>
+                        <div class="body">
+                            <small class="text-muted">Address: </small>
+                            <p>{{user_profile.basic.address.region}}
+                                {{user_profile.basic.address.zone}}
+                                {{user_profile.basic.address.woreda}}
+                                </p>
+                            <small class="text-muted">Age: </small>
+                            <p>{{user_profile.basic.age}}</p>
+                            <small class="text-muted">Sex: </small>
+                            <p>{{user_profile.basic.sex}}</p>
+                            <small class="text-muted">Email address: </small>
+                            <p>{{user_profile.basic.email}}</p>
+                            <small class="text-muted">Mobile: </small>
+                            <p>{{ user_profile.basic.phone }}</p>
+                            <small class="text-muted">Birth Date: </small>
+                            <p class="m-b-0">October 22th, 1990</p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <a class="btn btn-danger float-right"  href="">Remove from List</a>
+                    <div class="card">
+                            <ul class="nav nav-tabs-new2">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#add_urine_result">Add Urine Analysis Request</a></li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#add_stool_result">Add Stool Examination Result</a></li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#add_hematology_result">Add Hematology Result</a></li>
+                            </ul>
+                            <div class="tab-content mt-3">
+
+                                <div class="tab-pane " id="add_stool_result">
+                                    {% if stool %}
+                      <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Stool Examination Result Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="{% url 'add_stool_result_url' user_profile.id %}" method="POST">
+                                    {%csrf_token%}
+                                    <div class="form-group">
+                                        {{ stool_result_form}}
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="submit" value="report" class="btn btn-success">
+                                    </div>
+                                </form>
+                            <!-- /.card-body -->
+                            </div>
+                          <!-- /.card -->
+                        </div>
+                   </div>
+                   </div>
+                                    {% else %}
+                                    <label><p> Not requested </p></label>
+                                    {% endif %}
+                   </div>
+
+                                <div class="tab-pane active" id="add_urine_result">
+                                    {% if urine %}
+                      <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Urine Analysis Result Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="{% url 'add_urine_result_url' user_profile.id %}" method="POST">
+                                    {%csrf_token%}
+                                    <div class="form-group">
+                                        {{ urine_result_form}}
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="submit" value="report" class="btn btn-success">
+                                    </div>
+                                </form>
+                            <!-- /.card-body -->
+                            </div>
+                          <!-- /.card -->
+                        </div>
+                   </div>
+                   </div>
+                                    {% else %}
+                                    <label><p> No request </p></label>
+                                    {% endif %}
+                   </div>
+
+                                <div class="tab-pane " id="add_hematology_result">
+                                    {% if hematology %}
+                      <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Hematology Result Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="{% url 'add_hematology_result_url' user_profile.id %}" method="POST">
+                                    {%csrf_token%}
+                                    <div class="form-group">
+                                        {{ hematology_result_form}}
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="submit" value="report" class="btn btn-success">
+                                    </div>
+                                </form>
+                            <!-- /.card-body -->
+                            </div>
+                          <!-- /.card -->
+                        </div>
+                   </div>
+                   </div>
+                                    {% else %}
+                                    <label><p> No request </p></label>
+                                    {% endif %}
+                   </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+{% endblock  %}
+
+
+
+
+

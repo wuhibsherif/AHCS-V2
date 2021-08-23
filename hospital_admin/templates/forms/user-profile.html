@@ -1,0 +1,328 @@
+<!doctype html>
+{% extends 'hospital_admin_dashboard_base.html' %}
+
+{% block navheader %}
+{% if user_profile.role == 'Physician' %}
+Doctor Profile
+{% elif user_profile.role == 'Receptionist' %}
+Receptionist Profile
+{% elif user_profile.role == 'Nurse' %}
+Nurse Profile
+
+{% elif user_profile.role == 'Radiologist' %}
+Radiologist Profile
+{% elif user_profile.role == 'Lab_technician' %}
+Lab technician Profile
+{% elif user_profile.role == 'Pharmacist' %}
+Pharmacist Profile
+{% elif user_profile.role == 'Hospital_admin' %}
+Hospital Admin Profile
+{% endif %}
+{% endblock %}
+
+{% block navheaderlist %}
+<li class="breadcrumb-item"><a href="{% url 'hospital_admin_homepage_url'%}"><i class="icon-home"></i></a></li>
+{% if user_profile.role == 'Physician' %}
+<li class="breadcrumb-item active">Doctor</li>
+<li class="breadcrumb-item active">Doctor profile</li>
+{% elif user_profile.role == 'Receptionist' %}
+<li class="breadcrumb-item active">Receptionist</li>
+<li class="breadcrumb-item active">Receptionist profile</li>
+{% elif user_profile.role == 'Nurse'  %}
+<li class="breadcrumb-item active">Nurse</li>
+<li class="breadcrumb-item active">Nurse's profile</li>
+{% elif user_profile.role == 'Radiologist' %}
+<li class="breadcrumb-item active">Radiologist</li>
+<li class="breadcrumb-item active">Radiologist profile</li>
+{% elif user_profile.role == 'Lab_technician' %}
+<li class="breadcrumb-item active">Lab technician</li>
+<li class="breadcrumb-item active">Lab technician profile</li>
+{% elif user_profile.role == 'Pharmacist'  %}
+<li class="breadcrumb-item active">Pharmacist</li>
+<li class="breadcrumb-item active">Pharmacist profile</li>
+{% elif user_profile.role == 'Hospital_admin'  %}
+<li class="breadcrumb-item active">Hospital Admin</li>
+<li class="breadcrumb-item active">Hospital Admin profile</li>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row clearfix">
+
+    <div class="col-lg-4 col-md-12">
+        <div class="card profile-header">
+            <div class="body">
+                <div class="profile-image"><img alt="" class="rounded-circle" src="../assets/images/user.png"></div>
+                <div>
+                    <h4 class="m-b-0"><strong>{% if user_profile.role == 'Physician'  %}
+                        Dr.{%endif%}{{user_profile.first_name}}</strong> {{user_profile.middle_name}}</h4>
+                    <span>Washington, d.c.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="header">
+                <h2>Info</h2>
+                <ul class="header-dropdown">
+                    <li class="dropdown">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown"
+                           href="javascript:void(0);" role="button"></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="javascript:void(0);">Action</a></li>
+                            <li><a href="javascript:void(0);">Another Action</a></li>
+                            <li><a href="javascript:void(0);">Something else</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <small class="text-muted">Address: </small>
+                <p>{{user_profile.region}}</p>
+                <small class="text-muted">Age: </small>
+                <p>{{user_profile.age}}</p>
+                <small class="text-muted">Email address: </small>
+                <p>{{user_profile.email}}</p>
+                <small class="text-muted">Mobile: </small>
+                <p>{{ user_profile.phone }}</p>
+                <small class="text-muted">Birth Date: </small>
+                <p class="m-b-0">October 22th, 1990</p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-lg-8 col-md-12">
+
+        <div class="card">
+            <div class="row profile_state">
+                <div class="col-lg-3 col-6">
+                    <div class="body">
+                        <i class="fa fa-thumbs-up"></i>
+                        <h5 class="m-b-0 number count-to" data-fresh-interval="700" data-from="0" data-speed="1000"
+                            data-to="2365">2365</h5>
+                        <small>Experience</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="body">
+                        <i class="fa fa-star"></i>
+                        <h5 class="m-b-0 number count-to" data-fresh-interval="700" data-from="0" data-speed="1000"
+                            data-to="1203">1203</h5>
+                        <small>Awards</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="body">
+                        <i class="fa fa-user"></i>
+                        <h5 class="m-b-0 number count-to" data-fresh-interval="700" data-from="0" data-speed="1000"
+                            data-to="324">324</h5>
+                        <small>Clients</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="body">
+                        <i class="fa fa-bug"></i>
+                        <h5 class="m-b-0 number count-to" data-fresh-interval="700" data-from="0" data-speed="1000"
+                            data-to="1980">1980</h5>
+                        <small>Surgery</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="body">
+                <ul class="nav nav-tabs-new">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Basic">Basic</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Account">Account</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#General">General</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tab-content padding-0">
+
+            <div class="tab-pane active" id="Basic">
+                <div class="card">
+                    <div class="body">
+                        <h6>Basic Information</h6>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="label">
+                                    <div class="form-group">
+                                        <label>First Name: </label><label> First Name </label>
+                                        <input class="form-control" placeholder="First Name" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Last Name" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="fancy-radio">
+                                                <input checked name="gender2" type="radio" value="male">
+                                                <span><i></i>Male</span>
+                                            </label>
+                                            <label class="fancy-radio">
+                                                <input name="gender2" type="radio" value="female">
+                                                <span><i></i>Female</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="icon-calendar"></i></span>
+                                            </div>
+                                            <input class="form-control" data-date-autoclose="true"
+                                                   data-provide="datepicker" placeholder="Birthdate">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="http://" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Address Line 1" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Address Line 2" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="City" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="State/Province" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option value="">-- Select Country --</option>
+                                            <option value="AF">Afghanistan</option>
+                                            <option value="AX">Åland Islands</option>
+                                            <option value="AL">Albania</option>
+                                            <option value="DZ">Algeria</option>
+                                            <option value="AS">American Samoa</option>
+                                            <option value="AD">Andorra</option>
+                                            <option value="AO">Angola</option>
+                                            <option value="AI">Anguilla</option>
+                                            <option value="AQ">Antarctica</option>
+                                            <option value="AG">Antigua and Barbuda</option>
+                                            <option value="AR">Argentina</option>
+                                            <option value="AM">Armenia</option>
+                                            <option value="YE">Yemen</option>
+                                            <option value="ZM">Zambia</option>
+                                            <option value="ZW">Zimbabwe</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="button">Update</button> &nbsp;&nbsp;
+                            <button class="btn btn-default" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="Account">
+                    <div class="card">
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12">
+                                    <h6>Account Data</h6>
+                                    <div class="form-group">
+                                        <input class="form-control" disabled placeholder="Username" type="text"
+                                               value="ChandlerBing">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Email" type="email"
+                                               value="Chandler.info@yourdomain.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Phone Number" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <h6>Change Password</h6>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Current Password" type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="New Password" type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Confirm New Password" type="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="button">Update</button> &nbsp;&nbsp;
+                            <button class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="General">
+                    <div class="card">
+                        <div class="body">
+                            <h6>General Information</h6>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Phone Number" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>--Select Language</option>
+                                            <option lang="en" value="en_US">English (United States)</option>
+                                            <option lang="ar" value="ar">العربية</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Date Format</label>
+                                        <div class="fancy-radio">
+                                            <label><input name="dateFormat" type="radio" value=""><span><i></i>May 18, 2018</span></label>&nbsp;&nbsp;
+                                            <label><input name="dateFormat" type="radio" value=""><span><i></i>2018, May, 18</span></label>&nbsp;&nbsp;
+                                            <label><input checked name="dateFormat" type="radio" value=""><span><i></i>2018-03-10</span></label>&nbsp;&nbsp;
+                                            <label><input name="dateFormat" type="radio" value=""><span><i></i>02/09/2018</span></label>&nbsp;&nbsp;
+                                            <label><input name="dateFormat" type="radio" value=""><span><i></i>10/05/2018</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <h6>Email from Lucid</h6>
+                                    <p>I'd like to receive the following emails:</p>
+                                    <ul class="list-unstyled list-email-received">
+                                        <li>
+                                            <label class="fancy-checkbox">
+                                                <input checked
+                                                       type="checkbox"><span>Weekly account summary</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="fancy-checkbox">
+                                                <input type="checkbox"><span>Campaign reports</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="fancy-checkbox">
+                                                <input checked type="checkbox"><span>Promotional news such as offers or discounts</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="fancy-checkbox">
+                                                <input checked type="checkbox"><span>Tips for campaign setup, growth and client success stories</span></label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="button">Update</button> &nbsp;&nbsp;
+                            <button class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- /.content -->
+    {% endblock %}

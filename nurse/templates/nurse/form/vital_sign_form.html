@@ -1,0 +1,136 @@
+{% extends 'nurse/homepage.html' %}
+
+{% block content %}
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title">Vital Sign</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form action="{% url 'add_vital_sign_url' patient.id %}" method="POST">
+      {%csrf_token%}
+      <div class="row">
+        <div class="col-sm-4">
+          <!-- text input -->
+          <div class="form-group">
+              <label>User Name</label>
+            <p>{{patient.username}}</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <!-- text input -->
+            <div class="form-group">
+              <label>First Name</label>
+              <p>{{patient.first_name}}</p>
+              </div>
+        </div>
+          <div class="col-sm-4">
+            <!-- text input -->
+            <div class="form-group">
+              <label>Middle Name</label>
+              <p>{{patient.middle_name}}</p>
+            </div>
+          </div>
+      </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+          <!-- text input -->
+          <div class="form-group">
+            {{form.weight.errors}}
+            <label>Weight(Kgs)</label>
+            {{form.weight}}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            {{form.height.errors}}
+            <label>Height(CM)</label>
+            {{form.height}}
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+              {{form.temperature.errors}}
+            <label>Temperature</label>
+            {{form.temperature}}
+            </div>
+        </div>
+
+    </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            {{form.systolic_BP.errors}}
+            <label>Systolic B.P</label>
+            {{form.systolic_BP}}
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="form-group">
+            {{form.diastolic_BP.errors}}
+            <label>Diastolic B.P</label>
+            {{form.diastolic_BP}}
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+              {{form.urine_output.errors}}
+              <label>Urine Output</label>
+              {{form.urine_output}}
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <!-- text input -->
+          <div class="form-group">
+            {{form.respiratory_rate.errors}}
+            <label>Respiratory Rate(/Min)</label>
+            {{form.respiratory_rate}}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            {{form.heart_rate.errors}}
+            <label>Heart Rate(BPM)</label>
+            {{form.heart_rate}}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <!-- text input -->
+          <div class="form-group">
+            {{form.blood_sugar_F.errors}}
+              <label>Blood Sugar(F)</label>
+              {{form.blood_sugar_F}}
+          </div>
+      </div>
+      
+      <div class="row">
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            {{form.blood_sugar_R.errors}}
+              <label>Blood Sugar(R)</label>
+              {{form.blood_sugar_R}}
+          </div>
+        </div>
+      </div>
+        <!-- input states -->
+
+      <div class="form-group col-md-8">
+        <label>comment</label>
+        <input type="text" name="comment" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
+      </div>
+      <div class="form-group col-md-2">
+      <input type="hidden" name="patient_id" value="{{patient.id}}">
+        <input type="submit" class="btn btn-success" >
+      </div>
+
+<!--/.col (right) -->
+</form>
+</div>
+</div>
+{% endblock %}

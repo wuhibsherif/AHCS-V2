@@ -1,0 +1,9 @@
+<!doctype html>
+{% extends 'lab_technician/homepage.html' %}
+{% block navlist %}
+    <li class="breadcrumb-item active">my Profile</li>
+{% endblock navlist%}
+    
+{% block content %}
+    {% include '../user_profile.html' %}  
+{% endblock%}

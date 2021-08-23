@@ -1,0 +1,10 @@
+<!doctype html>
+{% extends 'hospital_admin/homepage.html' %}
+
+{% block navlist %}
+    <li class="breadcrumb-item active">Add new staff</li>
+{% endblock navlist%}
+
+{% block content %}
+    {% include 'forms/receptionstsform.html' %}
+{% endblock %}

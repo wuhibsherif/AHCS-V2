@@ -1,0 +1,370 @@
+{% extends 'physician/physician_dashboard.html' %}
+{% block  content%}
+<h3>Lab result page</h3>
+<ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#x-ray">Urine Analysis Result </a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ultrasound">Stool Examination Result</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#mri">Hematology Lab Result </a></li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content p-l-0 p-r-0">
+                <div class="tab-pane" id="x-ray">
+                    <nav class="sidebar-nav">
+                        <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Urine Analysis Result</h5>
+            </div>
+            <div class="card-body">
+              <div class="form-group" >
+                  <div>
+                <h5>Urine Chemical test</h5>
+                                    <br/>
+                                    <div class="text-primary">
+                                    <label class="fancy-checkbox">
+                                        <strong>Albumine :</strong>
+                                        <span>234</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Blood :</strong>
+                                        <span>432</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Leukocyte :</strong>
+                                        <span>532</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Glucose :</strong>
+                                        <span>3453</span>
+                                    </label>
+                                    </div>
+                      <div class="text-success">
+                                    <label class="fancy-checkbox">
+                                        <strong>PH :</strong>
+                                        <span>PH</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Nitrate</strong>
+                                        <span>Nitrate</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Urbilonogen</strong>
+                                        <span>Urbilonogen</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Ketone</strong>
+                                        <span>Ketone</span>
+                                    </label>
+                      </div>
+                      <div class="text-primary">
+                                    <label class="fancy-checkbox">
+                                        <strong>Bilirubin :</strong>
+                                        <span>Bilirubin</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Specific Gravity :</strong>
+                                        <span>Specific Gravity</span>
+                                    </label>
+                      </div>
+
+                  </div>
+                  <div>
+                  <h5>Urine Microscopic Test</h5>
+                      <div>
+                      <label> Cell</label>
+                          <br>
+                          <div class="text-info">
+                                    <label class="fancy-checkbox">
+                                        <strong>Leukocytes :</strong>
+                                        <span>Leukocytes</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Erythrocytes :</strong>
+                                        <span>Erythrocytes</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Yeast :</strong>
+                                        <span>Yeast</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Bacteria :</strong>
+                                        <span>Bacteria</span>
+                                    </label>
+                          </div>
+                          <div class="text-danger">
+                                    <label class="fancy-checkbox">
+                                         <strong>Squamous epithelial cells :</strong>
+                                        <span>Squamous epithelial cells</span>
+                                    </label>
+                          </div>
+                          <br>
+                          <label> Casts</label>
+                          <br>
+                          <div class="text-warning">
+                                     <label class="fancy-checkbox">
+                                         <strong>Hyaline Casts :</strong>
+                                         <span>Hyaline Casts</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Granular Cast :</strong>
+                                        <span>Granular Cast</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>WBC Cast :</strong>
+                                        <span>WBC Cast</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>RBC Cast :</strong>
+                                        <span>RBC Cast</span>
+                                    </label>
+                          </div>
+                          <br>
+                          <label> Casts</label>
+                          <br>
+                          <div class="text-success">
+                          <label class="fancy-checkbox">
+                                        <strong>Uric Acid :</strong>
+                                        <span>Uric Acid</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Calcium Oxalate :</strong>
+                                        <span>Calcium Oxalate</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Triplate phosphate :</strong>
+                                        <span>Triplate phosphate</span>
+                                    </label>
+                          </div>
+
+                      </div>
+                  </div>
+
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+    </nav>
+</div>
+                <div class="tab-pane p-l-15 p-r-15" id="ultrasound">
+                    <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Stool Examination Result</h5>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                                    <h5>Microscopic Examinaions</h5>
+                                    <br/>
+                  <div class="text-primary">
+                                    <label class="fancy-checkbox">
+                                        <strong>Parasites :</strong>
+                                        <span>Parasites</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Puss Cell :</strong>
+                                        <span>Puss Cell</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Red Blood Cell :</strong>
+                                        <span>Red Blood Cell</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Yeast Cell :</strong>
+                                        <span>Yeast Cell</span>
+
+                                    </label>
+                  </div>
+                  <div class="text-success">
+                                    <label class="fancy-checkbox">
+                                        <strong>Occult Blood Test(OBT) :</strong>
+                                        <span>Occult Blood Test(OBT)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>H.pylori Stool Ag test :</strong>
+                                        <span>H.pylori Stool Ag test</span>
+                                    </label>
+                                    <p id="error-checkbox"></p>
+                                </div>
+              </div>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+                </div>
+                <div class="tab-pane p-l-15 p-r-15" id="mri">
+                    <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Hematology Lab Result</h5>
+            </div>
+            <div class="card-body">
+              <div class="form-group" >
+                <label>Hematology Examinaions</label>
+                                    <br/>
+                                    <div class="text-primary">
+                                    <label class="fancy-checkbox">
+                                        <strong>CBC :</strong>
+                                        <span>CBC</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>BC :</strong>
+                                        <span>BC</span
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>TWC :</strong>
+                                        <span>TWC</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Differntial :</strong>
+                                        <span>Differntial</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Neutrophil(%) :</strong>
+                                        <span>Neutrophil(%)</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-success" >
+                                    <label class="fancy-checkbox">
+                                        <strong>Eosinophil(%) :</strong>
+                                        <span>Eosinophil(%)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Basophiles(%) :</strong>
+                                        <span>Basophiles(%)</span>
+                                    </label>
+
+                                    <label class="fancy-checkbox">
+                                        <strong>Monocyt(g/dl) :</strong>
+                                        <span>Monocyt(g/dl)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Hemoglobin(%) ;</strong>
+                                        <span>Hemoglobin(%)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Hemotcrit(ft) :</strong>
+                                        <span>Hemotcrit(ft)</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-warning">
+                                    <label class="fancy-checkbox">
+                                        <strong>MCV :</strong>
+                                        <span>MCV</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>MCH(pg) :</strong>
+                                        <span>MCH(pg)</span>
+                                    </label>
+
+                                    <label class="fancy-checkbox">
+                                        <strong>MCHC(pg) :</strong>
+                                        <span>MCHC(pg)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>RBC(cell/mm) :</strong>
+                                        <span>RBC(cell/mm)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>RBC Morphology:</strong>
+                                        <span>RBC Morphology</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-danger">
+                                    <label class="fancy-checkbox">
+                                        <strong>Platelet Count(*10^2) :</strong>
+                                        <span>Platelet Count(*10^2)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>ESR(mm/hr) :</strong>
+                                        <span>ESR(mm/hr)</span>
+                                    </label>
+
+                                    <label class="fancy-checkbox">
+                                        <strong>Bleeding Time Test :</strong>
+                                        <span>Bleeding Time Test</span>
+                                    </label>
+
+
+                                    <label class="fancy-checkbox">
+                                        <strong>Clot Reaction :</strong>
+                                        <span>Clot Reaction</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Coagulation Time :</strong>
+                                        <span>Coagulation Time</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-info">
+                                    <label class="fancy-checkbox">
+                                        <strong>Prothromin Time :</strong>
+                                        <span>Prothromin Time</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>P.T.T :</strong>
+                                        <span>P.T.T</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>FBS/RBS</strong>
+                                        <span>FBS/RBS</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Blood Group :</strong>
+                                        <span>Blood Group</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>Fibrinogen :</strong>
+                                        <span>Fibrinogen</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-secondary">
+                                    <label class="fancy-checkbox">
+                                        <strong>Coomos Test :</strong>
+                                        <span>Coomos Test</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        <strong>CD4(absolute cell/ul) :</strong>
+                                        <span>CD4(absolute cell/ul)</span>
+                                    </label>
+                                        </div>
+                                </div>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+                </div>
+
+      </div>
+
+            </div>
+    <!-- /.content
+
+
+
+{% endblock  %}
+
+
+
+
+

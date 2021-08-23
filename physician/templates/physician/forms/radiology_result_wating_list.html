@@ -1,0 +1,11 @@
+{% extends 'physician/physician_dashboard.html'%}
+{% block content %}
+    {% if xray_report.all %}
+        {% include 'physician/forms/radiology_result_table.html' %}
+    {% elif ultra_report.all %}
+        {% include 'physician/forms/radiology_result_table.html' %}
+    {% else %}
+<p>You have no Radiology result</p>
+    {% endif %}
+
+{%  endblock %}

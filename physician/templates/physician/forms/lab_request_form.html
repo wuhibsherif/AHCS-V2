@@ -1,0 +1,401 @@
+{% extends 'physician/physician_dashboard.html' %}
+{% block  content%}
+<ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#urine-analysis">Urine Analysis Request Form</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#stool-examination">Stool Examination Request Form </a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hematology">Heamatology Lab Request Form</a></li>
+
+            </ul>
+                
+            <!-- Tab panes -->
+            <div class="tab-content p-l-0 p-r-0">
+                <div class="tab-pane active" id="urine-analysis">
+                    <nav class="sidebar-nav">
+                        <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Urine Analysis Request Form</h5>
+            </div>
+            <div class="card-body">
+                 <form action="{% url 'add_urine_analysis_request_url' pk %}" method="POST">
+                            {%csrf_token%}
+              <div class="form-group" >
+                  <div>
+                <label>Urine Chemical test</label>
+                                    <br/>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.albumine}}
+                                        <span>Albumine</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.blood}}
+                                        <span>Blood</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.chemo_leukocyte}}
+                                        <span>Leukocyte</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.glucose}}
+                                        <span>Glucose</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.PH}}
+                                        <span>PH</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.nitrate}}
+                                        <span>Nitrate</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.urobilonogen}}
+                                        <span>Urobilonogen</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.ketone}}
+                                        <span>Ketone</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.bilirubin}}
+                                        <span>Bilirubin</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.specific_gravity}}
+                                        <span>Specific Gravity</span>
+                                    </label>
+
+                  </div>
+                  <div>
+                  <label>Urine Microscopic Test</label>
+                      <div>
+                      <label> Cell</label>
+                          <br>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.microscopy_leukocyte}}
+                                        <span>Leukocytes</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.erythrocyte}}
+                                        <span>Erythrocytes</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.yeast}}
+                                        <span>Yeast</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.bacteria}}
+                                        <span>Bacteria</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.squamous_epithelial_cell}}
+                                        <span>Squamous epithelial cells</span>
+                                    </label>
+                          <br>
+                          <label> Casts</label>
+                          <br>
+                          <label class="fancy-checkbox">
+                                         {{urine_analysis.hyaline_cast}}
+                                        <span>Hyaline Casts</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                         {{urine_analysis.granular_cast}}
+                                        <span>Granular Cast</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                         {{urine_analysis.WBC_casts}}
+                                        <span>WBC Cast</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.RBC_cast}}
+                                        <span>RBC Cast</span>
+                                    </label>
+                          <br>
+                          <label> Casts</label>
+                          <br>
+                          <label class="fancy-checkbox">
+                                        {{urine_analysis.uric_acid}}
+                                        <span>Uric Acid</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.calcium_oxalate}}
+                                        <span>Calcium Oxalate</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{urine_analysis.triple_phosphate}}
+                                        <span>Triple phosphate</span>
+                                    </label>
+
+                      </div>
+                  </div>
+
+              </div>
+                     <div class="row">
+        <div class="col-6">
+          <input type="submit" value="Send Request" class="btn btn-success float-right">
+        </div>
+      </div>
+                 </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </nav>
+</div>
+                <div class="tab-pane p-l-15 p-r-15" id="stool-examination">
+                    <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Stool Examination Request Form</h5>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add_stool_examination_request_url' pk %}" method="POST">
+                            {%csrf_token%}
+              <div class="form-group">
+                                    <label>Microscopic Examinaions</label>
+                                    <br/>
+                                    <label class="fancy-checkbox">
+                                        {{stool.parasites}}
+                                        <span>Parasites</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{stool.pus_cell}}
+                                        <span>Puss Cell</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{stool.red_blood_cell}}
+                                        <span>Red Blood Cell</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{stool.yeast_cell}}
+                                        <span>Yeast Cell</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{stool.occult_blood_test}}
+                                        <span>Occult Blood Test(OBT)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{stool.h_pylory_stool_ag_test}}
+                                        <span>H.pylori Stool Ag test</span>
+                                    </label>
+                                    <p id="error-checkbox"></p>
+                                </div>
+                    <div class="row">
+        <div class="col-6">
+          <input type="submit" value="Send Request" class="btn btn-success float-right">
+        </div>
+      </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+                </div>
+                <div class="tab-pane p-l-15 p-r-15" id="hematology">
+                    <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Hematology Lab Request Form</h5>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add_hematology_request_url' pk %}" method="POST">
+                            {%csrf_token%}
+              <div class="form-group" >
+                <label>Hematology Examinaions</label>
+                                    <br/>
+                                    <div class="text-primary">
+                                    <label class="fancy-checkbox">
+                                        {{hematology.CBC}}
+                                        <span>CBC</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.BE}}
+                                        <span>BC</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.TWBC}}
+                                        <span>TWBC</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.differential}}
+                                        <span>Differential</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.neutrophil}}
+                                        <span>Neutrophil(%)</span>
+                                    </label>
+                                        <label class="fancy-checkbox">
+                                        {{hematology.lymphocyte}}
+                                        <span>lymphocyte(%)</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-success" >
+                                    <label class="fancy-checkbox">
+                                        {{hematology.eocynophil}}
+                                        <span>Eocynophil(%)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.basophiles}}
+                                        <span>Basophiles(%)</span>
+                                    </label>
+
+                                    <label class="fancy-checkbox">
+                                        {{hematology.monocyt}}
+                                        <span>Monocyt(g/dl)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.haemoglobin}}
+                                        <span>Hemoglobin(%)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.hemo_TCRIT}}
+                                        <span>Hemotcrit(ft)</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-warning">
+                                    <label class="fancy-checkbox">
+                                        {{hematology.MCV}}
+                                        <span>MCV</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.MCH}}
+                                        <span>MCH(pg)</span>
+                                    </label>
+
+                                    <label class="fancy-checkbox">
+                                        {{hematology.MCHC}}
+                                        <span>MCHC(pg)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.RBC}}
+                                        <span>RBC(cell/mm)</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.RBC_morphology}}
+                                        <span>RBC Morphology</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-danger">
+                                    <label class="fancy-checkbox">
+                                        {{hematology.platlet_count}}
+                                        <span>Platelet Count</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.EST}}
+                                        <span>ESR</span>
+                                    </label>
+
+                                    <label class="fancy-checkbox">
+                                        {{hematology.bleeding_time_test}}
+                                        <span>Bleeding Time Test</span>
+                                    </label>
+
+
+                                    <label class="fancy-checkbox">
+                                        {{hematology.clot_retraction}}
+                                        <span>Clot Reaction</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.coagulation_time}}
+                                        <span>Coagulation Time</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-info">
+                                    <label class="fancy-checkbox">
+                                        {{hematology.prothrombin_time}}
+                                        <span>Prothromin Time</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.PTT}}
+                                        <span>P.T.T</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.FBS_RBS}}
+                                        <span>FBS/RBS</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.blood_group}}
+                                        <span>Blood Group</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.fibrinogen}}
+                                        <span>Fibrinogen</span>
+                                    </label>
+                                    </div>
+                                    <br>
+                                    <div class="text-secondary">
+                                    <label class="fancy-checkbox">
+                                        {{hematology.coombs_test}}
+                                        <span>Coomos Test</span>
+                                    </label>
+                                    <label class="fancy-checkbox">
+                                        {{hematology.CD4}}
+                                        <span>CD4</span>
+                                    </label>
+                                        </div>
+                                </div>
+                    <div class="row">
+        <div class="col-6">
+          <input type="submit" value="Send Request" class="btn btn-success float-right">
+        </div>
+      </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+                </div>
+                <div class="tab-pane p-l-15 p-r-15" id="city_scan">
+                    <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h3 class="card-title">City Scan Request Form</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group" >
+                <label for="inputName">User Name</label>
+                <input type="text" id="inputName" class="form-control" class="col-md-3">
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">Drug Name , Dosage Form , Frequency, Duration, Quantity, Route of administeration and other information </label>
+                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <a href="#" class="btn btn-danger">Cancel</a>
+          <input type="submit" value="Attach" class="btn btn-success float-right">
+        </div>
+      </div>           
+            </div> 
+    <!-- /.content 
+
+
+
+{% endblock  %}
+
+
+
+
+

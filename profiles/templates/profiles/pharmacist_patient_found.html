@@ -1,0 +1,57 @@
+<!doctype html>
+{% extends 'pharmacist/homepage.html' %}
+{% block navlist %}
+    <li class="breadcrumb-item active">patient Prescription</li>
+{% endblock navlist%}
+
+{% block content %}
+{% if found %}
+
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+
+            <div class="row clearfix justify-content-center">
+                <div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+                                <h3><strong>Patient Name</strong></h3>
+                                <h4 class="m-b-0"><strong>{{user_profile.basic.first_name}}</strong> {{user_profile.basic.last_name}}</h4>
+                                <span>{{ user_profile.basic.kebele }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Patient Authentication is needed before viewing prescription Detail</strong></h2>
+                        </div>
+                        <div class="body">
+                            <form action="{% url 'authenticate_patient_url' %}" method="POST">
+                            {%csrf_token%}
+                            <div class="form-group">
+                                  <label for="exampleInputEmail1">Patient User name</label>
+                                {{form.username}}
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">Password</label>
+                                  {{form.password}}
+                                </div>
+                                <div class="form-group">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <p id="messages">{{msg}}</P>
+                              </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+    </div>
+</div>
+
+{% elif notfound %}
+    {% include '../search_not_found.html' %}
+{% endif %}
+{% endblock%}

@@ -1,0 +1,258 @@
+<html>
+    <div class="row clearfix">
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+
+                                <h4 class="m-b-0"><strong>{{user_profile.first_name}}</strong> {{user_profile.last_name}}</h4>
+                                <span>{{ user_profile.kebele }}</span>
+                            </div>            
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2>Info</h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another Action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <small class="text-muted">Address: </small>
+                            <p>{{user_profile.address.region}}</p>
+                            <small class="text-muted">Age: </small>
+                            <p>{{user_profile.age}}</p>
+                            <small class="text-muted">Email address: </small>
+                            <p>{{user_profile.email}}</p>
+                            <small class="text-muted">Mobile: </small>
+                            <p>{{ user_profile.phone }}</p>
+                            <small class="text-muted">Birth Date: </small>
+                            <p class="m-b-0">October 22th, 1990</p>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="col-lg-8 col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <ul class="nav nav-tabs-new2">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#appointment">Change Password</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#referral">Edit Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#register">Register</a></li>
+                            </ul>
+                            <div class="tab-content mt-3">
+
+
+                                <div class="tab-pane active" id="appointment">
+                                    <div class="body">
+                            <form id="wizard_with_validation" method="POST">
+                                <h3>Change Password</h3>
+                                <fieldset>
+                                    <div class="form-group form-float">
+                                        <input type="text" class="form-control" placeholder="Current Password *" name="username" required>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <input type="password" class="form-control" placeholder="Password *" name="password" id="password" required>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <input type="password" class="form-control" placeholder="Confirm Password *" name="confirm" required>
+                                    </div>
+                                    <div >
+                                        <input type="submit" class="btn btn-primary" value="Change Password">
+                                    </div>
+                                </fieldset>
+
+
+                            </form>
+                        </div>
+                    </div>
+
+
+                                <div class="tab-pane" id="referral">
+
+
+                    <div class="card">
+                        <div class="body">
+                            <ul class="nav nav-tabs-new">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#Basic">Basic</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Account">Account</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#General">General</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-content padding-0">
+
+                        <div class="tab-pane active" id="Basic">
+                            <div class="card">
+                                <div class="body">
+                                    <h5>Basic Information</h5>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                {{form.firstname}}
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Middle Name</label>
+                                                {{form.middlename}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                {{form.lastname}}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h5>Address Info</h5>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Region</label>
+                                                {{form.region}}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <div>
+                                                    <label class="fancy-radio">
+                                                        <label>Zone</label>
+                                                        {{form.zone}}
+                                                    </label>
+                                                    <label class="fancy-radio">
+                                                        <label>Woreda</label>
+                                                        {{form.woreda}}
+                                                    </label>
+                                                    <label class="fancy-radio">
+                                                        <label>Kebele</label>
+                                                        {{form.kebele}}
+                                                    </label>
+                                                    <label class="fancy-radio">
+                                                        <label>House No</label>
+                                                        {{form.house_no}}
+                                                    </label>
+                                                     <label class="fancy-radio">
+                                                        <label>Phone No</label>
+                                                        {{form.phone}}
+                                                    </label>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary">Update</button> &nbsp;&nbsp;
+                                    <button type="button" class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="Account">
+                            <div class="card">
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12">
+                                            <h6>Account Data</h6>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" value="ChandlerBing" disabled placeholder="Username">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" value="Chandler.info@yourdomain.com" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Phone Number">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <button type="button" class="btn btn-primary">Update</button> &nbsp;&nbsp;
+                                    <button class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="General">
+                            <div class="card">
+                                <div class="body">
+                                    <h6>General Information</h6>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Phone Number">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Date Format</label>
+                                                <div class="fancy-radio">
+                                                    <label><input name="dateFormat" value="" type="radio"><span><i></i>May 18, 2018</span></label>&nbsp;&nbsp;
+                                                    <label><input name="dateFormat" value="" type="radio"><span><i></i>2018, May, 18</span></label>&nbsp;&nbsp;
+                                                    <label><input name="dateFormat" value="" type="radio" checked><span><i></i>2018-03-10</span></label>&nbsp;&nbsp;
+                                                    <label><input name="dateFormat" value="" type="radio"><span><i></i>02/09/2018</span></label>&nbsp;&nbsp;
+                                                    <label><input name="dateFormat" value="" type="radio"><span><i></i>10/05/2018</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <h6>Email from Lucid</h6>
+                                            <p>I'd like to receive the following emails:</p>
+                                            <ul class="list-unstyled list-email-received">
+                                                <li>
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox" checked><span>Weekly account summary</span></label>
+                                                </li>
+                                                <li>
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox"><span>Campaign reports</span></label>
+                                                </li>
+                                                <li>
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox" checked><span>Promotional news such as offers or discounts</span></label>
+                                                </li>
+                                                <li>
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox" checked><span>Tips for campaign setup, growth and client success stories</span></label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary">Update</button> &nbsp;&nbsp;
+                                    <button class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+                    <div class="tab-pane" id="register">
+                                    <div class="body">
+                              <div class="table-responsive">
+                                <input type="submit" class="btn btn-primary" value="Register">
+                            </div>
+                        </div>
+                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+      <!-- /.content -->
+</html>

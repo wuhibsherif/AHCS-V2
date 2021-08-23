@@ -1,0 +1,231 @@
+<!doctype html>
+{% extends 'system_admin/homepage.html' %}
+
+
+{% block navlist %}
+    <li class="breadcrumb-item active">Add HealthCare Provider</li>
+{% endblock %}
+
+{% block content %}
+
+
+        <div class="row clearfix">
+        <form action="{% url 'add_new_healthcare_provider_url'%}" method="post">
+            {% csrf_token %}
+
+            <div class="card  ">
+                <div class="header bg-warning  text-white">
+                    <h2 class="text-white">Healthcare Basic Information <small></small></h2>
+                </div>
+                <div class="body">
+                    <div class="row clearfix">
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.firstname.errors}}
+                                <label class="ml-2">Healthcare Provider Name</label>
+                                {{form.name}}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="ml-2">Phone</label>
+                                {{form.phone}}
+                                {{form.phone.errors}}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{form.type.errors}}
+                                <label class="ml-2">type</label>
+                                {{form.type}}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <br>
+                </div>
+
+                <div class="card">
+                    <div class="header bg-info">
+                        <h2 class="text-white">Healthcare Address Information </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    {{form.region.errors}}
+                                    {{form.region}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.zone.errors}}
+                                    <label>Zone</label>
+                                    {{form.zone}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.woreda.errors}}
+                                    <label>Woreda/Subcity</label>
+                                    {{form.woreda}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    {{form.kebele.errors}}
+                                    <label>Kebele</label>
+                                    {{form.kebele}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card  ">
+                    <div class="header bg-warning  text-white">
+                        <h2 class="text-white">Admins Basic Information </h2>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form1.firstname.errors}}
+                                    <label class="ml-2">First Name</label>
+                                    {{form1.firstname}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form1.middlename.errors}}
+                                    <label class="ml-2">Middle Name</label>
+                                    {{form1.middlename}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form1.lastname.errors}}
+                                    <label>Last Name</label>
+                                    {{form1.lastname}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form1.age.errors}}
+                                    <label>Age</label>
+                                    {{form1.age}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form1.sex.errors}}
+                                    <label class="ml-2">Sex</label>
+                                    {{form1.sex}}
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="ml-2">Phone</label>
+                                    {{form1.phone}}
+                                    {{form1.phone.errors}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="ml-2">Email</label>
+                                    {{form1.email}}
+                                    {{form1.email.errors}}
+                                </div>
+                            </div>
+
+
+                        <br>
+                    </div>
+
+                    <div class="card">
+                        <div class="header bg-info">
+                            <h2 class="text-white">Admin's Address Information </h2>
+                        </div>
+                        <div class="body">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Region</label>
+                                        {{form1.region.errors}}
+                                        {{form1.region}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{form1.zone.errors}}
+                                        <label>Zone</label>
+                                        {{form1.zone}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{form1.woreda.errors}}
+                                        <label>Woreda/Subcity</label>
+                                        {{form1.woreda}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        {{form1.kebele.errors}}
+                                        <label>Kebele</label>
+                                        {{form1.kebele}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{form1.house_no.errors}}
+                                        <label>House No</label>
+                                        {{form1.house_no}}
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    <div class="form-group col-md-4">
+                        <input class="btn btn-success" type="submit">
+                        <button class="btn btn-outline-secondary" type="submit">Cancel</button>
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+                <br>
+            </div>
+        </form>
+
+    </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+ {% for msg in messages %}
+    swal('{{msg}}')
+ {% endfor %}
+</script>
+{% endblock %}

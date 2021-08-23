@@ -1,0 +1,87 @@
+{% extends 'physician/physician_dashboard.html' %}
+{% block  content%}
+<ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#x-ray">X-ray Request Form</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ultrasound">Ultrasound Request Form</a></li>
+
+            </ul>
+                
+            <!-- Tab panes -->
+            <div class="tab-content p-l-0 p-r-0">
+                <div class="tab-pane active" id="x-ray">
+                    <nav class="sidebar-nav">
+                        <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">X-ray Request Form</h5>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add_xray_request_url' pk %}" method="POST">
+                    {%csrf_token%}
+              <div class="form-group" >
+                  {{xray_form.finding_and_diagnosis.errors}}
+                <label for="inputName">Pertinent clinical history, Operation,Physical, Findings & Diagnosis </label>
+                  {{xray_form.finding_and_diagnosis}}
+              </div>
+              <div class="form-group">
+                  {{xray_form.examination_requested.errors}}
+                <label for="inputDescription">Examination Requested </label>
+                {{xray_form.examination_requested}}
+              </div>
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <input type="submit" class="btn btn-success" value="submit">
+                    </div>
+                </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </nav>
+</div>
+                <div class="tab-pane p-l-15 p-r-15" id="ultrasound">
+                    <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h3 class="card-title">Ultrasound Request Form</h3>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add_ultrasound_request_url' pk %}" method="POST">
+                    {%csrf_token%}
+              <div class="form-group">
+                <label for="inputDescription"> </label>
+                  {{ultrasound_form.organ_to_be_examined.errors}}
+                        <label for="information">Organ to be examined</label>
+                  {{ultrasound_form.organ_to_be_examined}}
+              </div>
+                 <div class="form-group">
+                    <div class="col-sm-8">
+                        <input type="submit" class="btn btn-success" value="submit">
+                    </div>
+                </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+                </div>
+
+            </div> 
+    <!-- /.content 
+
+
+
+{% endblock  %}
+
+
+
+
+

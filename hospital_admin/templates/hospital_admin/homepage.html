@@ -1,0 +1,76 @@
+<!doctype html>
+{% extends  'dashboard_base.html' %}
+
+{% block title %}
+    <title>AHCS Hospital Admin Dashboard </title>
+{% endblock title%}
+
+{% block navheaderlist %}
+    <div class="col-lg-6 col-md-8 col-sm-12">
+        <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>{{ request.session.healthcare_name }}  Hospital Admin</h2>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'hospital_admin_homepage_url' %}"><i class="icon-home"></i></a></li>
+            {% block navlist %}
+
+            {% endblock navlist%}
+        </ul>
+    </div>
+    {% block search %}
+    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+            <div class="col-md-10 offset-md-2">
+                <form action="{% url 'search_staff_url' %}">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Type staff username here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default"><i class="icon-magnifier"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+    {% endblock %}
+{% endblock navheaderlist%}
+
+{% block main_menu_list%}
+    <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Staff</span> </a>
+                                <ul>
+                                    <li><a href="{% url 'add_new_user_url' %}">Add New Staff</a></li>
+                                    <li><a href="{% url 'all_users_url' %}">View All Staffs</a></li>
+                                    <li><a href=#>Update Staff</a></li>
+                                    <li><a href=#>Remove Staff</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Doctors</span> </a>
+                                <ul>
+                                    <li><a href="{% url 'all_physicians_url'%}">All Physicians</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user"></i><span>Nurses</span> </a>
+                                <ul>
+                                    <li><a href="{% url 'all_nurses_url' %}">All Nurses</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user"></i><span>Radiologists</span> </a>
+                                <ul>
+                                    <li><a href="{% url 'all_radiologists_url'%}">All Radiologists</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user"></i><span>Lab Technicians</span> </a>
+                                <ul>
+                                    <li><a href="{% url 'all_lab_technicians_url'%}">All Lab Technicians</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user"></i><span>Receptionists</span> </a>
+                               <ul>
+                                    <li><a href="{% url 'all_receptionists_url'%}">All Receptionists</a></li>
+                                </ul>
+                            </li>
+                            <li><a href=#><i class="icon-wallet"></i><span>View Logs</span></a></li>
+{% endblock main_menu_list%}
+
+{% block content %}
+
+      <!-- /.content -->
+ {% endblock %}

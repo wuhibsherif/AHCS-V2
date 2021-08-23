@@ -1,0 +1,66 @@
+{% extends 'system_admin/homepage.html' %}
+
+{% block navlist %}
+    <li class="breadcrumb-item active">All Pharmacy admins</li>
+{% endblock navlist%}
+
+{% block content %}
+
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Pharmacy admins List</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example dataTable table-custom">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>User Name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Age</th>
+                                            <th>Sex</th>
+                                            <th>Pharmacy</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                    {% for user in pharmacy %}
+
+                                        <tr>
+
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{user.admin.username}}</td>
+                                            <td>{{user.admin.first_name}}</td>
+                                            <td>{{user.admin.middle_name}}</td>
+                                            <td>{{user.admin.last_name}}</td>
+                                            <td>{{user.admin.age}}</td>
+                                            <td>{{user.admin.sex}}</td>
+                                            <td>{{user}}</td>
+                                            {% if user.is_login %}
+                                                <td>Online</td>
+                                            {% else %}
+                                                <td>Offline</td>
+                                            {% endif %}
+                                            <td><a href="{% url 'user_profile_url' user.admin.id%}"><button type="button" class="btn btn-primary">View Profile</button></a> </td>
+
+                                        <tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}

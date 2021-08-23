@@ -1,0 +1,50 @@
+<!doctype html>
+{% extends  'dashboard_base.html' %}
+
+{% block title %}
+    <title>AHCS Pharmacy Admin Dashboard </title>
+{% endblock title%}
+
+{% block navheaderlist %}
+    <div class="col-lg-6 col-md-8 col-sm-12">
+        <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>{{ request.session.healthcare_name }}  Pharmacy Admin </h2>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'pharmacy_admin_homepage_url' %}"><i class="icon-home"></i></a></li>
+            {% block navlist %}
+
+            {% endblock navlist%}
+
+        </ul>
+    </div>
+    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+            <div class="col-md-10 offset-md-2">
+                <form action="{% url 'search_staff_url' %}">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Type pharmacist username here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default"><i class="icon-magnifier"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+{% endblock navheaderlist%}
+
+{% block main_menu_list%}
+
+    <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-user-follow"></i><span>Pharmacist</span> </a>
+        <ul>
+            <li><a href="{% url 'register_new_pharmacist_url' %}">Add Pharmacist</a></li>
+            <li><a href=#>Update Pharmacist</a></li>
+            <li><a href=#>Remove Pharmacist</a></li>
+            <li><a href="#">View All Pharmacist</a></li>
+        </ul>
+    </li>
+    <li><a href=#><i class="icon-wallet"></i><span>View Logs</span></a></li>
+{% endblock main_menu_list%}
+
+{% block content %}
+
+      <!-- /.content -->
+ {% endblock %}

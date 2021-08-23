@@ -1,0 +1,71 @@
+{% extends 'hospital_admin/homepage.html' %}
+
+{% block navlist %}
+    <li class="breadcrumb-item active">all Lab Technicians</li>
+{% endblock navlist%}
+
+{% block search %}
+    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+            <div class="col-md-10 offset-md-2">
+                <form action="{% url 'search_lab_technician_url' %}">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Type Lab technician username here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default"><i class="icon-magnifier"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Lab Technicians List</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example dataTable table-custom">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>User Name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Age</th>
+                                            <th>Sex</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for labtech in staff %}
+                                        {% if labtech.basic.role == 'Lab_technician' %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{labtech.basic.username}}</td>
+                                                <td>{{labtech.basic.first_name}}</td>
+                                                <td>{{labtech.basic.last_name}}</td>
+                                                <td>{{labtech.basic.middle_name}}</td>
+                                                <td>{{labtech.basic.age}}</td>
+                                                <td>{{labtech.basic.sex}}</td>
+                                                <td>Online</td>
+                                                <td><a href="{% url 'user_profile_url' labtech.basic.id%}"><button type="button" class="btn btn-primary">View Profile</button></a> </td>
+                                            <tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}

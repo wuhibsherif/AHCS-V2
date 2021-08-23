@@ -1,0 +1,426 @@
+{% extends 'physician/physician_dashboard.html' %}
+{% block  content%}
+<ul class="nav nav-tabs" xmlns="http://www.w3.org/1999/html">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#stool">Stool Examination Result</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hematology">Hematology Result</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#urine">Urine Analysis Result</a></li>
+                <li class="nav-item float-right" ><a class="btn btn-success float-right "  onfocus="red" href="{% url 'patient_detail_url' pk %}">patient detail</a></li>
+            </ul>
+                
+            <!-- Tab panes -->
+            <div class="tab-content p-l-0 p-r-0">
+                <div class="tab-pane active" id="stool">
+                    {% if stool_report.all %}
+                    <nav class="sidebar-nav">
+                        <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Stool Examination Result</h5>
+            </div>
+            <div class="card-body">
+                {% for stool in stool_report %}
+                <div class="container">
+                    <h5 class="text-success">Stool Examination Report {{ forloop.counter}}</h5>
+                    <div class="col-md-12 text-right">
+                        <p class="m-b-0">reported on: {{ stool.date_of_report.date}}</p>
+                    </div>
+                  {% if stool.parasites %}
+                    <p><label for="inputName">parasite: </label>
+                      <label>{{ stool.parasites }}</label></p>
+
+                        {% endif %}
+                    {% if stool.pus_cell %}
+                       <p></p> <label for="inputName">pus cell: </label>
+                          <label>{{ stool.pus_cell }}</label></p>
+                            {% endif %}
+
+            {% if stool.red_blood_cell %}
+                    <p></p><label for="inputName">red blood cell: </label>
+                      <label>{{ stool.red_blood_cell }}</label></p>
+                        {% endif %}
+                {% if stool.yeast_cell %}
+                    <p></p><label for="inputName">Yeast cell: </label>
+                      <label>{{ stool.yeast_cell }}</label></p>
+                        {% endif %}
+                     </div>
+
+
+
+                {% endfor %}
+
+
+
+
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+
+      </div>
+    </nav>
+                    {% else %}
+                <label><p>No result</p></label>
+                {% endif%}
+
+</div>
+                <div class="tab-pane" id="urine">
+                    {% if urine_report.all %}
+                    <nav class="sidebar-nav">
+                        <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Urine Analysis Result</h5>
+            </div>
+            <div class="card-body">
+                {% for urine in urine_report %}
+                <div class="container">
+                    <h5 class="text-success">Urine Analysis Report {{ forloop.counter}}</h5>
+                    <div class="col-md-12 text-right">
+                        <p class="m-b-0">reported on: {{ urine.date_of_report.date}}</p>
+                    </div>
+
+
+                  {% if urine.albumine %}
+                    <p><label for="inputName">Albumine: </label>
+                      <label>{{ urine.albumine }}</label></p>
+
+                        {% endif %}
+                    {% if urine.blood %}
+                       <p></p> <label for="inputName">Blood: </label>
+                          <label>{{ urine.blood }}</label></p>
+                            {% endif %}
+
+            {% if urine.chemo_leukocyte %}
+                    <p></p><label for="inputName">Chemo Leukocyte: </label>
+                      <label>{{ urine.chemo_leukocyte }}</label></p>
+                        {% endif %}
+                {% if urine.glucose %}
+                    <p></p><label for="inputName">Glucose: </label>
+                      <label>{{ urine.glucose }}</label></p>
+                        {% endif %}
+
+
+                  {% if urine.PH %}
+                    <p><label for="inputName">PH: </label>
+                      <label>{{ urine.PH }}</label></p>
+
+                        {% endif %}
+                    {% if urine.nitrate %}
+                       <p></p> <label for="inputName">Nitrate: </label>
+                          <label>{{ urine.nitrate }}</label></p>
+                            {% endif %}
+
+            {% if urine.urobilonogen %}
+                    <p></p><label for="inputName">Uronilonogen: </label>
+                      <label>{{ urine.urobilonogen }}</label></p>
+                        {% endif %}
+                {% if urine.ketone %}
+                    <p></p><label for="inputName">Ketone: </label>
+                      <label>{{ urine.ketone }}</label></p>
+                        {% endif %}
+
+                      {% if urine.bilirubin %}
+                    <p></p><label for="inputName">bilirubin: </label>
+                      <label>{{ urine.bilirubin }}</label></p>
+                        {% endif %}
+
+                {% if urine.specific_gravity %}
+                    <p></p><label for="inputName">Specific Gravity: </label>
+                      <label>{{ urine.specific_gravity }}</label></p>
+                        {% endif %}
+
+
+                  {% if urine.microscopy_leukocyte %}
+                    <p><label for="inputName">Microscopy Leukocyte: </label>
+                      <label>{{ urine.microscopy_leukocyte}}</label></p>
+
+                        {% endif %}
+                    {% if urine.erythrocyte %}
+                       <p></p> <label for="inputName">Erythrocyte: </label>
+                          <label>{{ urine.erythrocyte }}</label></p>
+                            {% endif %}
+
+            {% if urine.yeast %}
+                    <p></p><label for="inputName">Yeast: </label>
+                      <label>{{ urine.yeast }}</label></p>
+                        {% endif %}
+                {% if urine.bacteria %}
+                    <p></p><label for="inputName">Bacteria: </label>
+                      <label>{{ urine.bacteria }}</label></p>
+                        {% endif %}
+
+
+                         {% if urine.squamous_epithelial_cell %}
+                    <p></p><label for="inputName">Squamous Epithelial Cell: </label>
+                      <label>{{ urine.squamous_epithelial_cell }}</label></p>
+                        {% endif %}
+
+
+                  {% if urine.hyaline_cast %}
+                    <p><label for="inputName">Hyaline Cast: </label>
+                      <label>{{ urine.hyaline_cast}}</label></p>
+
+                        {% endif %}
+
+            {% if urine.granular_cast %}
+                    <p></p><label for="inputName">Granular Cast: </label>
+                      <label>{{ urine.granular_cast }}</label></p>
+                        {% endif %}
+                {% if urine.WBC_casts %}
+                    <p></p><label for="inputName">WBC Casts: </label>
+                      <label>{{ urine.WBC_casts }}</label></p>
+                        {% endif %}
+
+
+
+                        {% if urine.RBC_cast %}
+                    <p></p><label for="inputName">RBC Casts: </label>
+                      <label>{{ urine.RBC_Cast }}</label></p>
+                        {% endif %}
+                {% if urine.uric_acid %}
+                    <p></p><label for="inputName">Uric Acid: </label>
+                      <label>{{ urine.uric_acid }}</label></p>
+                        {% endif %}
+
+
+                         {% if urine.calcium_oxalate %}
+                    <p></p><label for="inputName">Squamous Calcium Oxalate: </label>
+                      <label>{{ urine.calcium_oxalate}}</label></p>
+                        {% endif %}
+
+
+                  {% if urine.triple_phosphate %}
+                    <p><label for="inputName">Triple Phosphate: </label>
+                      <label>{{ urine.triple_phosphate}}</label></p>
+
+                        {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+
+      </div>
+    </nav>
+                    {% else %}
+                <label><p>No result</p></label>
+                {% endif%}
+
+</div>
+                <div class="tab-pane" id="hematology">
+                    {% if hematology_report.all %}
+                    <nav class="sidebar-nav">
+                        <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h5 class="card-title">Hematology Result</h5>
+            </div>
+            <div class="card-body">
+                {% for hematology in hematology_report %}
+                <div class="container">
+                    <h5 class="text-success">Hematology Report {{ forloop.counter}}</h5>
+                    <div class="col-md-12 text-right">
+                        <p class="m-b-0">reported on: {{ hematology.date_of_report.date}}</p>
+                    </div>
+                  {% if hematology.CBC %}
+                    <p><label for="inputName">CBC: </label>
+                      <label>{{ hematology.CBC }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.BE %}
+                       <p></p> <label for="inputName">BE: </label>
+                          <label>{{ hematology.BE }}</label></p>
+                            {% endif %}
+
+            {% if hematology.TWBC %}
+                    <p></p><label for="inputName">TWBC: </label>
+                      <label>{{ hematology.TWBC }}</label></p>
+                        {% endif %}
+                {% if hematology.differential %}
+                    <p></p><label for="inputName">Differential: </label>
+                      <label>{{ hematology.differential }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.neutrophil %}
+                    <p><label for="inputName">Neutrophil: </label>
+                      <label>{{ hematology.Neutrophil }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.lymphocyte %}
+                       <p></p> <label for="inputName">Leymphocyte: </label>
+                          <label>{{ hematology.lymphocyte }}</label></p>
+                            {% endif %}
+
+            {% if hematology.eocynophil %}
+                    <p></p><label for="inputName">Eocynophil: </label>
+                      <label>{{ hematology.eocynophil }}</label></p>
+                        {% endif %}
+                {% if hematology.basophiles %}
+                    <p></p><label for="inputName">Basophiles: </label>
+                      <label>{{ hematology.basophiles }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.monocyt %}
+                    <p><label for="inputName">Monocyt: </label>
+                      <label>{{ hematology.monocyt }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.haemoglobin %}
+                       <p></p> <label for="inputName">Haemoglobin: </label>
+                          <label>{{ hematology.haemoglobin }}</label></p>
+                            {% endif %}
+
+            {% if hematology.hemo_TCRIT %}
+                    <p></p><label for="inputName">Hemo TCRIT: </label>
+                      <label>{{ hematology.haemo_TCRIT }}</label></p>
+                        {% endif %}
+                {% if hematology.MCV %}
+                    <p></p><label for="inputName">MVC: </label>
+                      <label>{{ hematology.MCV }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.MCH %}
+                    <p><label for="inputName">MCH: </label>
+                      <label>{{ hematology.MCH }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.MCHC %}
+                       <p></p> <label for="inputName">MCHC: </label>
+                          <label>{{ hematology.MCHC }}</label></p>
+                            {% endif %}
+
+            {% if hematology.RBC %}
+                    <p></p><label for="inputName">RBC: </label>
+                      <label>{{ hematology.RBC }}</label></p>
+                        {% endif %}
+                {% if hematology.RBC_morphology %}
+                    <p></p><label for="inputName">RBC Morphology: </label>
+                      <label>{{ hematology.RBC_morphology }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.platlet_count %}
+                    <p><label for="inputName">Platlet Count: </label>
+                      <label>{{ hematology.platlet_count }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.EST %}
+                       <p></p> <label for="inputName">EST: </label>
+                          <label>{{ hematology.EST }}</label></p>
+                            {% endif %}
+
+            {% if hematology.bleeding_time_test %}
+                    <p></p><label for="inputName">Bleeding Time Test: </label>
+                      <label>{{ hematology.bleeding_time_test }}</label></p>
+                        {% endif %}
+                {% if hematology.clot_retraction %}
+                    <p></p><label for="inputName">Clot Retraction: </label>
+                      <label>{{ hematology.clot_retraction }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.coagulation_time %}
+                    <p><label for="inputName">Coagulation Time: </label>
+                      <label>{{ hematology.coagulation_time  }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.prothrombin_time %}
+                       <p></p> <label for="inputName">Prothrombin Time: </label>
+                          <label>{{ hematology.prothrombin_time }}</label></p>
+                            {% endif %}
+
+            {% if hematology.PTT %}
+                    <p></p><label for="inputName">PTT: </label>
+                      <label>{{ hematology.PTT }}</label></p>
+                        {% endif %}
+                {% if hematology.FBS_RBS %}
+                    <p></p><label for="inputName">FBS RBS: </label>
+                      <label>{{ hematology.FBS_RBS }}</label></p>
+                        {% endif %}
+
+                         {% if hematology.clot_retraction %}
+                    <p></p><label for="inputName">Clot Retraction: </label>
+                      <label>{{ hematology.clot_retraction }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.coagulation_time %}
+                    <p><label for="inputName">Coagulation Time: </label>
+                      <label>{{ hematology.coagulation_time  }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.prothrombin_time %}
+                       <p></p> <label for="inputName">Prothrombin Time: </label>
+                          <label>{{ hematology.prothrombin_time }}</label></p>
+                            {% endif %}
+
+            {% if hematology.PTT %}
+                    <p></p><label for="inputName">PTT: </label>
+                      <label>{{ hematology.PTT }}</label></p>
+                        {% endif %}
+                {% if hematology.FBS_RBS %}
+                    <p></p><label for="inputName">FBS RBS: </label>
+                      <label>{{ hematology.FBS_RBS }}</label></p>
+                        {% endif %}
+
+                        {% if hematology.blood_group %}
+                    <p><label for="inputName">Blood Group: </label>
+                      <label>{{ hematology.blood_group }}</label></p>
+
+                        {% endif %}
+                    {% if hematology.fibrinogen %}
+                       <p></p> <label for="inputName">Fibrinogen: </label>
+                          <label>{{ hematology.fibrinogen }}</label></p>
+                            {% endif %}
+
+            {% if hematology.coombs_test %}
+                    <p></p><label for="inputName">Coombs Test: </label>
+                      <label>{{ hematology.coombs_test }}</label></p>
+                        {% endif %}
+                {% if hematology.CD4 %}
+                    <p></p><label for="inputName">CD4: </label>
+                      <label>{{ hematology.CD4 }}</label></p>
+                        {% endif %}
+                </div>
+
+
+                {% endfor %}
+            </div>
+
+
+
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+
+      </div>
+    </nav>
+                    {% else %}
+                <label><p>No result</p></label>
+                {% endif%}
+
+</div>
+
+  </div>
+    <!-- /.content 
+
+
+
+{% endblock  %}
+
+
+
+
+

@@ -1,0 +1,31 @@
+{% extends 'physician/physician_dashboard.html' %}
+
+{% block content %}
+  <section class="content ">
+      <div class="row" >
+        <div class="col-md-8">
+          <div class="card card-primary ">
+            <div class="card-header">
+              <h3 class="card-title">Prescription Form</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputDescription">Drug Name , Dosage Form , Frequency, Duration, Quantity, Route of administeration and other information </label>
+                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <a href="#" class="btn btn-danger">Cancel</a>
+          <input type="submit" value="Attach" class="btn btn-success float-right">
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock  %}

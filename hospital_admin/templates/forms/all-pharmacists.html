@@ -1,0 +1,55 @@
+{% extends 'hospital_admin_dashboard_base.html' %}
+{% block navheader %}Hospital Admin Dashboard {% endblock %}
+{% block navheaderlist %}
+    <li class="breadcrumb-item"><a href="{% url 'hospital_admin_homepage_url '%}"><i class="icon-home"></i></a></li>
+    <li class="breadcrumb-item active">All Receptionist</li>
+{% endblock %}
+{% block content %}
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Pharmacist List</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example dataTable table-custom">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>User Name</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Age</th>                                            
+                                            <th>Sex</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for pharmacist in all-pharmacists%}
+
+                                        <tr>
+                                            <td>{{pharmacist}}</td>
+                                            <td>{{pharmacist.username}}</td>
+                                            <td>{{pharmacist.first_name}}</td>
+                                            <td>{{pharmacist.middlename}}</td>
+                                            <td>{{pharmacist.last_name}}</td>
+                                            <td>{{pharmacist.age}}</td>
+                                            <td>{{pharmacist.sex}}</td>
+                                            <td>Online</td>
+                                            <td><button type="button" class="btn btn-primary">View Profile</button> </td>
+                                        
+                                        <tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}

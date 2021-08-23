@@ -1,0 +1,124 @@
+{% extends 'receptionist_dashboard_base.html' %}
+{% block content %}
+
+<div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Patient Registration Form</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <form method="POST" action="{% url 'register_new_patient_url'%}">
+                {%csrf_token%}
+                
+              <div class="row">
+                <div class="col-sm-4">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>First Name</label>
+                    {{form.errors}}
+                    {{form.firstname}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>Middle Name</label>
+                    {{form.middlename}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Last Name</label>
+                      {{form.lastname}}
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Age</label>
+                      {{form.age}}
+                    </div>
+                  </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>Sex</label>
+                    {{form.sex}}
+                
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Email</label>
+                      {{form.email}}
+                    </div>
+                  </div>
+              </div>
+              <br>
+              <hr>
+              <br>
+              <div class="row">
+                <div class="col-sm-4">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Region</label>
+                    {{form.region}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>Zone</label>
+                    {{form.zone}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Woreda/Subcity</label>
+                      {{form.woreda}}
+                    </div>
+                  </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-4">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>Kebele</label>
+                    {{form.kebele}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    {{form.phone}}
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>House No</label>
+                      {{form.house_no}}
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                
+                
+                  
+              
+                <!-- input states -->
+              
+
+             
+              <div class="form-group col-md-4">
+                <input type="submit" class="btn btn-success" >
+                <input  value="Cancel" class="btn btn-danger" >
+                
+         <!-- /.card -->
+      </div>
+      </form>
+      </div>
+      </div>
+      </div>
+      </div>
+ {% endblock %}
+ 

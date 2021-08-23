@@ -1,0 +1,55 @@
+<!doctype html>
+{% extends 'system_admin/homepage.html' %}
+{% block navlist %}
+    <li class="breadcrumb-item active">Pharmacy Information</li>
+{% endblock navlist%}
+
+{% block content %}
+    <div class="row clearfix">
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+                                <h4 class="m-b-0"><strong>{{pharmacy.name}}</strong> {{ pharmacy.admin.username}}</h4>
+                                <span>{{ pharmacy.address.region }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2>Info</h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another Action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <small class="text-muted">Address: </small>
+                            <p>{{pharmacy.address.region}}</p>
+                            <small class="text-muted">Age: </small>
+                            <p>{{pharmacy.last}}</p>
+                            <small class="text-muted">Email address: </small>
+                            <p>{{pharmacy.last}}</p>
+                            <small class="text-muted">Mobile: </small>
+                            <p>{{ pharmacy.phone }}</p>
+                            <small class="text-muted">Birth Date: </small>
+                            <p class="m-b-0">October 22th, 1990</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                </div>
+            </div>
+{% endblock%}

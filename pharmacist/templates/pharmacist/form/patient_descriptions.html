@@ -1,0 +1,286 @@
+{% extends  'physician/physician_dashboard.html' %}
+{% block content %}
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+                                <h3><strong>Patient Name</strong></h3>
+                                <h4 class="m-b-0"><strong>{{user_profile.basic.first_name}}</strong> {{user_profile.basic.last_name}}</h4>
+                                <span>{{ user_profile.basic.kebele }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Info</strong></h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another Action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <small class="text-muted">Address: </small>
+                            <p>{{user_profile.basic.address.region}}
+                                {{user_profile.basic.address.zone}}
+                                {{user_profile.basic.address.woreda}}
+                                </p>
+                            <small class="text-muted">Age: </small>
+                            <p>{{user_profile.basic.age}}</p>
+                            <small class="text-muted">Sex: </small>
+                            <p>{{user_profile.basic.sex}}</p>
+                            <small class="text-muted">Email address: </small>
+                            <p>{{user_profile.basic.email}}</p>
+                            <small class="text-muted">Mobile: </small>
+                            <p>{{ user_profile.basic.phone }}</p>
+                            <small class="text-muted">Birth Date: </small>
+                            <p class="m-b-0">October 22th, 1990</p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="card">
+                            <ul class="nav nav-tabs-new2">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#patient_form">Patient Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#prescription_form">Prescription form</a></li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#referral_request">Referral Request</a></li>
+                                <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#vital_sign">View Vital sign</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#referral">View Referral</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#administered_treatment">Administered treatment form</a></li>
+                                <li class="nav-item"><a class="nav-link"  href="{% url 'radiology_request_url' %}">Radiology Request</a></li>
+                                <li class="nav-item"><a class="nav-link"  href="{% url 'lab_request_url' %}">Lab Request</a></li>
+                                <li class="nav-item"><a class="nav-link"  href="">Medical History</a></li>
+
+
+
+
+                            </ul>
+                            <div class="tab-content mt-3">
+                                <div class="tab-pane " id="vital_sign">
+                                {% if vital_sign %}
+                                    {% include 'physician/forms/vital_sign_view.html' %}
+                                {% else %}
+                                    <p><strong>No Vital Sign found for {{user_profile.basic.first_name}} </strong></p>
+                                {% endif %}
+                                </div>
+                            <div class="tab-pane" id="referral">
+                                <div class="body">
+                                    {% if referral %}
+                              <div class="table-responsive">
+                                <table class="table m-b-0">
+                                    <thead>
+                                        <tr>
+
+                                            <th>From (Hospital)</th>
+                                            <th>Referral Given Date</th>
+                                            <th>Status</th>
+                                            <th>Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="text-info">{{referral.referring_hospital.name}}</span></td>
+                                            <td>{{referral.referral_date.date}}</td>
+                                            <td><span class="badge badge-success">{{referral.status}}</span></td>
+                                            <td><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsereferral" aria-expanded="false" aria-controls="collapseExample">view</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="collapse" id="collapsereferral">
+                              <div class="card card-body">
+
+                                  <label><strong>Health problem identified in detail</strong></label>
+                                  <p>{{referral.health_problem_identified_in_detail}}</p>
+                                  <label><strong>Identified Disease Type</strong></label>
+                                  <p>{{referral.identified_disease_type}}</p>
+                                  <label><strong>Action Taken</strong></label>
+                                  <p>{{referral.action_taken}}</p>
+                                  <label><strong>Reason for Referral</strong></label>
+                                  <p>{{referral.reason_for_referral}}</p>
+
+                              </div>
+                            </div>
+                                    {% else %}
+                                    <p><strong>No referral found for {{user_profile.basic.first_name}} </strong></p>
+                                    {% endif %}
+                        </div>
+                    </div>
+                    <div class="tab-pane active" id="patient_form">
+                        <div class="row">
+                        <div class="col-md-12">
+                        <form action="{% url 'add_patient_form_url' user_profile.id %}" method="POST">
+                            {%csrf_token%}
+                            <label>Add in to Patient Form</label>
+                            <div class="form-group">
+
+                                {{patient_form.note.errors}}
+
+                                {{patient_form.note}}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                <input type="submit" class="btn btn-success" value="attach">
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                        </div>
+                            <div class="row clearfix">
+                                <div class="col-md-12">
+                                    <h6>Latest Patient Form</h6>
+                                    {% if latest_patient_form %}
+                                    <div class="col-md-12 text-right">
+                                    <p class="m-b-0"><b>Date Added: </b>{{latest_patient_form.date.date}}</p>
+                                    </div>
+                                    <p>{{latest_patient_form.note}}</p>
+                                    {% else %}
+                                    <p><strong>No patient form yet</strong></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                    </div>
+                    <div class="tab-pane " id="referral_request">
+                        <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Referral Request Form</h5>
+                            </div>
+                            <div class="card-body">
+                        <form action="{% url 'add_referral_url' user_profile.id %}" method="POST">
+                            {%csrf_token%}
+                            <div class="form-group ">
+
+                                {{referral_request.health_problem_identified_in_detail.errors}}
+                                    <label>Health problem Identified in Detail </label>
+                                {{referral_request.health_problem_identified_in_detail}}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                {{referral_request.identified_disease_type.errors}}
+                                    <label>Identified Disease Type</label>
+                                {{referral_request.identified_disease_type}}
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                 <div class="col-sm-8">
+                                {{referral_request.action_taken.errors}}
+                                    <label>Action Taken </label>
+                                {{referral_request.action_taken}}
+                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                {{referral_request.reason_for_referral.errors}}
+                                    <label>Reason for Referral </label>
+                                {{referral_request.reason_for_referral}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                {{ referral_request.referred_to_hospital.errors }}
+                                <label for="information">Refer to Hospital</label>
+                                {{ referral_request.referred_to_hospital }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                <input type="submit" class="btn btn-success" value="attach">
+                                </div>
+                            </div>
+
+                        </form>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                 </div>
+
+                   <div class="tab-pane " id="prescription_form">
+                      <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Prescription Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="{% url 'add_prescription_url' user_profile.id %}" method="POST">
+                                    {%csrf_token%}
+                                    <div class="form-group">
+                                      {{prescription_form.errors}}
+                                        <label for="inputDescription">Drug Name , Dosage Form , Frequency, Duration, Quantity, Route of administration and other information </label>
+                                        {{prescription_form.prescription_detail}}
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="submit" value="Attach" class="btn btn-success">
+                                    </div>
+                                </form>
+                            <!-- /.card-body -->
+                            </div>
+                          <!-- /.card -->
+                        </div>
+                   </div>
+                   </div>
+                   </div>
+                   <div class="tab-pane " id="administered_treatment">
+                       <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Administered Treatment Form</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="{% url 'add_administered_treatment_url' user_profile.id %}" method="POST">
+                                    {%csrf_token%}
+                                  <div class="form-group" >
+                                    <label for="inputName">Medication Name</label>
+                                    {{administered_treatment.medication_name}}
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="inputDescription">Medication Description </label>
+                                    {{administered_treatment.description}}
+                                  </div>
+                                    <div class="row">
+                                      <input type="submit" value="Attach" class="btn btn-success ">
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                      </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script>
+    function find_available_Hospital(value)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "http://127.0.0.1:8000/nurse/avaliable_physician/" +value, false ); // false for synchronous request
+        xmlHttp.send( null );
+        document.getElementById('dr').innerHTML = xmlHttp.responseText;
+        document.getElementById('doctor').value = xmlHttp.responseText;
+    }
+</script>
+
+{% endblock content%}

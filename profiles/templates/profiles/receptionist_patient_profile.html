@@ -1,0 +1,13 @@
+<!doctype html>
+{% extends 'receptionist/homepage.html' %}
+{% block navlist %}
+    <li class="breadcrumb-item active">patient Profile</li>
+{% endblock navlist%}
+
+{% block content %}
+{% if found %}
+    {% include '../patient_profile.html' %}
+{% elif notfound %}
+    {% include '../search_not_found.html' %}
+{% endif %}
+{% endblock%}
