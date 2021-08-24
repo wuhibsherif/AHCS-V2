@@ -2,6 +2,7 @@ import datetime
 
 from django import forms
 import django.forms.widgets
+from django.core.exceptions import ValidationError
 
 from patient.models import Prescription
 
@@ -10,12 +11,18 @@ class DateInput(forms.DateInput):
     input_type = 'date'
 
 
+def no_past(value):
+    today = datetime.date.today()
+    if value < today:
+        raise ValidationError('Date cannot be in the past.')
+
+
 class Medication_Form(forms.Form):
     name = forms.CharField(required=True, max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
     frequency = forms.IntegerField(required=True, widget=forms.NumberInput(attrs={'class': 'form-control'}))
     description = forms.CharField(required=True, widget=forms.Textarea(attrs={'class': 'form-control', 'type': 'date'}))
-    start_date = forms.DateField(required=True, widget=DateInput)
-    end_date = forms.DateField(required=True, widget=DateInput)
+    start_date = forms.DateField(required=True, widget=DateInput, validators=[no_past])
+    end_date = forms.DateField(required=True, widget=DateInput, validators=[no_past])
 
     def save_medication_detail(self, context):
         medication = Prescription.objects.get(id=context['prescription'].id)

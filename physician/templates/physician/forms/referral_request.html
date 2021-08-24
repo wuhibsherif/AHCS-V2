@@ -1,0 +1,58 @@
+{% extends  'physician/patient_detail.html' %}
+{% block card_content %}
+    <div class="row" >
+                        <div class="col-md-12">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">Referral Request Form</h5>
+                            </div>
+                            <div class="card-body">
+                        <form action="{% url 'add_referral_url' user_profile.id %}" method="POST">
+                            {%csrf_token%}
+                            <div class="form-group ">
+
+                                {{referral_form.health_problem_identified_in_detail.errors}}
+                                    <label>Health problem Identified in Detail </label>
+                                {{referral_form.health_problem_identified_in_detail}}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                {{referral_form.identified_disease_type.errors}}
+                                    <label>Identified Disease Type</label>
+                                {{referral_form.identified_disease_type}}
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                 <div class="col-sm-8">
+                                {{referral_form.action_taken.errors}}
+                                    <label>Action Taken </label>
+                                {{referral_form.action_taken}}
+                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                {{referral_form.reason_for_referral.errors}}
+                                    <label>Reason for Referral </label>
+                                {{referral_form.reason_for_referral}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                {{ referral_form.referred_to_hospital.errors }}
+                                <label for="information">Refer to Hospital</label>
+                                {{referral_form.referred_to_hospital}}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                <input type="submit" class="btn btn-success" value="attach">
+                                </div>
+                            </div>
+
+                        </form>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+{% endblock card_content%}

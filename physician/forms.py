@@ -31,7 +31,7 @@ class DateInput(forms.DateInput):
 def no_past(value):
     today = date.today()
     if value < today:
-        raise ValidationError('Appointment_Date cannot be in the past.')
+        raise ValidationError('Appointment Date cannot be in the past.')
 
 
 class AppointmentForm(forms.Form):

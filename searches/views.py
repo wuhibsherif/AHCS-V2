@@ -71,8 +71,8 @@ def search_patient(request):
     try:
         patient = Patient.objects.get(basic_id=User.objects.get(username=search_query).id)
         staff = Staff.objects.get(basic_id=request.user.id)
-        appointment = Appointment.objects.filter(patient_id=patient.id, status="pending")
-        referral = Referral.objects.filter(patient_id=patient.id, status="pending")
+        appointment = Appointment.objects.filter(patient_id=patient.id, status="pending", hospital_id=staff.hospital_id)
+        referral = Referral.objects.filter(patient_id=patient.id, status="pending", referred_to_hospital_id=staff.hospital_id)
         try:
             triage = Triage.objects.get(patient_id=patient.id, hospital_id=staff.hospital_id, stutus='pending')
             registered = True

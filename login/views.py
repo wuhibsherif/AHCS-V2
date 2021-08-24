@@ -66,6 +66,12 @@ def user_login(request):
                     return redirect('lab_technician_homepage_url')
                 else:
                     print("disabled account")
+            elif user is not None and user.role == 'Admission and discharge':
+                if user.is_active:
+                    login(request, user)
+                    return redirect('admission_and_discharge_homepage_url')
+                else:
+                    print("disabled account")
 
             elif user is not None and user.role == 'pharmacist':
                 if user.is_active:
