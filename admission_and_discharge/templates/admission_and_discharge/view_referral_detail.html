@@ -1,0 +1,39 @@
+{% extends  'admission_and_discharge/homepage.html' %}
+
+{% block content %}
+      <div class="row clearfix">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Referral Detail</h2>
+                        </div>
+                        <div class="body">
+                              <div class="card card-body">
+                                  <label><strong>Health problem identified in detail</strong></label>
+                                  <p>{{referral.health_problem_identified_in_detail}}</p>
+                                  <label><strong>Identified Disease Type</strong></label>
+                                  <p>{{referral.identified_disease_type}}</p>
+                                  <label><strong>Action Taken</strong></label>
+                                  <p>{{referral.action_taken}}</p>
+                                  <label><strong>Reason for Referral</strong></label>
+                                  <p>{{referral.reason_for_referral}}</p>
+                              </div>
+                            <form action="{% url 'referral_detail_url' referral.id%}" method="post">
+                                {% csrf_token%}
+                           <div class="form-group">
+                                <div class="col-sm-8">
+                                <label for="information">Select Department</label>
+                                    {{ department.department}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                <input type="submit" class="btn btn-success" value="approve">
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ {% endblock %}

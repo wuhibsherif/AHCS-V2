@@ -1,0 +1,47 @@
+<div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+                                <h3><strong>Patient Name</strong></h3>
+                                <h4 class="m-b-0"><strong>{{user_profile.basic.first_name}}</strong> {{user_profile.basic.middle_name}}</h4>
+                                <span>{{ user_profile.basic.kebele }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Info</strong></h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another Action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <small class="text-muted">Address: </small>
+                            <p>{{user_profile.basic.address.region}}
+                                {{user_profile.basic.address.zone}}
+                                {{user_profile.basic.address.woreda}}
+                                </p>
+                            <small class="text-muted">Age: </small>
+                            <p>{{user_profile.basic.age}}</p>
+                            <small class="text-muted">Sex: </small>
+                            <p>{{user_profile.basic.sex}}</p>
+                            <small class="text-muted">Email address: </small>
+                            <p>{{user_profile.basic.email}}</p>
+                            <small class="text-muted">Mobile: </small>
+                            <p>{{ user_profile.basic.phone }}</p>
+                            <small class="text-muted">Birth Date: </small>
+                            <p class="m-b-0">October 22th, 1990</p>
+                        </div>
+                    </div>
+
+
+                </div>

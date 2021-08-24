@@ -65,8 +65,9 @@ def add_vital_sign(request, pk):
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Nurse'])
 def admit_to_dr(request, pk):
-    distinct = Staff.objects.filter(hospital_id=Staff.objects.get(basic_id=request.user.id).
-                                    hospital_id).values('specialty').exclude(specialty=None).distinct()
+    distinct = Staff.objects.filter(hospital_id=Staff.objects.get(basic_id=request.user.id).hospital_id).\
+        values('specialty').exclude(specialty=None,).exclude(specialty='Lab_technician').exclude(specialty='X-ray').\
+        exclude(specialty='Ultrasound').exclude(specialty='Lab_technician').distinct()
 
     form = VitalSignForm
     patient = User.objects.get(id=pk)

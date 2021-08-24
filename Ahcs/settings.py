@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'searches',
     'system_admin',
     'rest_framework',
+    'admission_and_discharge',
 
     
     

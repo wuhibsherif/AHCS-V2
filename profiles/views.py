@@ -29,7 +29,7 @@ def user_profile(request, pk):
         return render(request, 'profiles/system_admin_users_profile.html', context)
 
 @login_required(login_url='login_url')
-#@allowed_users(allowed_roles=['*'])
+@allowed_users(allowed_roles=['Receptionist', 'pharmacist', 'Physician', 'pharmacy admin', 'hospital admin', 'Radiologist', 'Admission and discharge', 'Nurse', 'pharmacy admin', 'Lab_technician'])
 def my_profile(request, pk):
     profile = User.objects.get(id=pk)
     role = request.user.role
@@ -49,6 +49,8 @@ def my_profile(request, pk):
         return render(request, 'profiles/receptionist_my_profile.html', context)
     elif role == 'Radiologist':
         return render(request, 'profiles/radiologist_my_profile.html', context)
+    elif role == 'Admission and discharge':
+        return render(request, 'profiles/admission_and_discharge_my_profile.html', context)
     elif role == 'Lab_technician':
         return render(request, 'profiles/lab_technician_my_profile.html', context)
     elif role == 'Nurse':

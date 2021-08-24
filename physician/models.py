@@ -43,6 +43,7 @@ class Referral(models.Model):
     action_taken = models.CharField(max_length=50, null=True)
     reason_for_referral = models.CharField(max_length=50, null=True)
     status = models.CharField(max_length=50, default='pending')
+    department = models.CharField(max_length=50, default=None, null=True)
     feedback = models.TextField(null=True)
     feedback_given_by = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, related_name='feedback_given_by')
     approved_by = models.ForeignKey(Staff, on_delete=models.CASCADE, null=True, related_name='referral_approved_by')

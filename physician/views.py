@@ -23,6 +23,7 @@ from physician.forms import AddPatientForm, ReferralRequestForm, PrescriptionFor
     HematologyExaminationRequestForm, AppointmentForm
 from physician.models import PatientWaitingList, Referral
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def physician_homepage(request):
@@ -64,6 +65,7 @@ def radiology_requests(request, pk):
     context = {'xray_form': xray_form, 'ultrasound_form': ultrasound_form, 'pk': pk}
     return render(request, "physician/forms/xray_form.html", context)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def remove_from_list(request, pk):
@@ -75,6 +77,7 @@ def remove_from_list(request, pk):
     staff.num_waiting = staff.num_waiting - 1
     staff.save()
     return redirect('physician_homepage_url')
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -96,17 +99,15 @@ def patient_detail(request, pk):
         referral = None
     patient_form = AddPatientForm
     prescription_form = PrescriptionForm
-    appointment_form = AppointmentForm
-
     hospital_id = Staff.objects.get(basic_id=request.user.id).hospital.id
     referral_request = ReferralRequestForm(pk=hospital_id)
 
     administered_treatment = AdministeredTreatmentForm
     context = {'patient': pk, 'user_profile': user_profile, 'vital_sign': vital_sign,
-               'patient_form': patient_form, 'prescription_form': prescription_form,
-               'referral': referral, 'referral_request': referral_request, 'appointment_form': appointment_form,
+               'patient_form': patient_form, 'prescription_form': prescription_form, 'referral': referral,
                'latest_patient_form': latest_patient_form, 'administered_treatment': administered_treatment}
     return render(request, "physician/patient_detail.html", context)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -116,6 +117,7 @@ def lab_request(request, pk):
     hematology = HematologyExaminationRequestForm
     context = {'urine_analysis': urine_analysis, 'stool': stool, 'hematology': hematology, 'pk': pk}
     return render(request, "physician/forms/lab_request_form.html", context)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -136,28 +138,35 @@ def add_patient_form(request, pk):
             context = {'patient_form': patient_form, 'patient': patient}
             return render(request, "nurse/form/vital_sign_form.html", context)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def add_referral(request, pk):
+    staff = Staff.objects.get(basic_id=request.user.id)
+    hospital = staff.hospital
+    patient = Patient.objects.get(id=pk)
     if request.method == 'POST':
         referral_form = ReferralRequestForm(request.POST)
-        patient = Patient.objects.get(id=pk)
-        staff = Staff.objects.get(basic_id=request.user.id)
-        hospital = staff.hospital
         context = {'patient': patient, 'staff': staff, 'hospital': hospital}
         if referral_form.is_valid():
             referral_form.save_referral(context)
             # nxt = request.POST.get('next', '/')
             return redirect('patient_detail_url', pk)
         else:
-            print(referral_form.errors)
+            context = {'referral_form': referral_form, 'user_profile': patient}
+            return render(request, "physician/forms/referral_request.html", context)
+    referral_form = ReferralRequestForm(pk=hospital.id)
+    context = {'referral_form': referral_form, 'user_profile': patient}
+    return render(request, "physician/forms/referral_request.html", context)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def add_prescription(request, pk):
+    patient = Patient.objects.get(id=pk)
+    prescription_form = PrescriptionForm(request.POST or None)
     if request.method == 'POST':
         prescription_form = PrescriptionForm(request.POST)
-        patient = Patient.objects.get(id=pk)
         staff = Staff.objects.get(basic_id=request.user.id)
         hospital = staff.hospital
         context = {'patient': patient, 'staff': staff, 'hospital': hospital}
@@ -165,6 +174,11 @@ def add_prescription(request, pk):
             prescription_form.save_prescription(context)
             # nxt = request.POST.get('next', '/')
             return redirect('patient_detail_url', pk)
+        else:
+            print(prescription_form.errors)
+    context = {'prescription_form': prescription_form, 'user_profile': patient}
+    return render(request, "physician/forms/patient_form.html", context)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -179,6 +193,7 @@ def administered_treatment(request, pk):
             administered_treatment_form.save_administered_treatment(context)
             # nxt = request.POST.get('next', '/')
             return redirect('patient_detail_url', pk)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -197,6 +212,7 @@ def add_xray_request(request, pk):
         else:
             print(xray_form.errors)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def add_ultrasound_request(request, pk):
@@ -212,6 +228,7 @@ def add_ultrasound_request(request, pk):
         return redirect('radiology_request_url', pk)
     else:
         print(ultrasound_request.errors)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -233,6 +250,7 @@ def view_lab_result_waiting_list(request):
 
     return render(request, "physician/forms/lab_result_waiting_list.html", context)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def view_radiology_result_waiting_list(request):
@@ -247,6 +265,7 @@ def view_radiology_result_waiting_list(request):
         reports['xray'] = xray_report
     context = {'ultra_report': ultra_report, 'xray_report': xray_report, 'reports': reports}
     return render(request, "physician/forms/radiology_result_wating_list.html", context)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -286,6 +305,7 @@ def add_stool_examination_request(request, pk):
             lab_tech.save()
             return redirect('lab_request_url', pk)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def add_urine_analysis_request(request, pk):
@@ -319,6 +339,7 @@ def add_urine_analysis_request(request, pk):
             lab_tech.num_waiting = staff.num_waiting + 1
             lab_tech.save()
             return redirect('lab_request_url', pk)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -354,6 +375,7 @@ def add_hematology_request(request, pk):
             lab_tech.save()
             return redirect('lab_request_url', pk)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def lab_result_detail(request, pk):
@@ -369,6 +391,7 @@ def lab_result_detail(request, pk):
     context = {'urine_report': urine_report, 'stool_report': stool_report, 'hematology_report': hematology_report,
                'pk': pk}
     return render(request, "physician/forms/lab_result_detail.html", context)
+
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
@@ -391,18 +414,21 @@ def medical_history(request, pk):
     print(all_vital_sign)
     return render(request, "physician/forms/medical_history.html", context)
 
+
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['Physician'])
 def add_appointment(request, pk):
+    patient = Patient.objects.get(id=pk)
+    appointment_form = AppointmentForm(request.POST or None)
     if request.method == 'POST':
-        patient = Patient.objects.get(id=pk)
         staff = Staff.objects.get(basic_id=request.user.id)
         hospital = staff.hospital
         context = {'patient': patient, 'staff': staff, 'hospital': hospital}
-        appointment_form = AppointmentForm(request.POST)
         if appointment_form.is_valid():
             appointment_form.save_appointment(context)
             messages.success(request, "Appointement Added Successfully")
             return redirect('patient_detail_url', pk)
-
-
+        else:
+            print(appointment_form.errors)
+    context = {'appointment_form': appointment_form, 'user_profile': patient}
+    return render(request, "physician/forms/add_appointment.html", context)

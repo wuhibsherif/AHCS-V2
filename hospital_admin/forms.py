@@ -55,7 +55,7 @@ class UserRegistrationForm(forms.Form):
     radiology_speciality_choice = [('X-ray', 'X-ray'), ('Ultrasound', 'Ultrasound')]
     role_choices = [('Receptionist', 'Receptionist'), ('Physician', speciality_choice), ('Nurse', 'Nurse'),
                     ('Radiologist', radiology_speciality_choice), ('Lab_technician', 'Lab_technician'),
-                    ('Pharmacist', 'Pharmacist')]
+                    ('Admission and discharge', 'Admission and discharge')]
     sex_choices = [('Male', 'Male'), ('Female', 'Female')]
     region_choice = (
         ("Tigray", "Tigray"), ("Afar", "Afar"), ("Amhara", "Amhara"), ("Oromia", "Oromia"), ("Somali", "Somali"),
@@ -176,7 +176,6 @@ class UserRegistrationForm(forms.Form):
 
     def save(self, context):
         password = User.objects.make_random_password()
-        count = User.objects.count()
         new_staff_address = Address.objects.create(
             region=self.cleaned_data.get('region'),
             zone=self.cleaned_data.get('zone'),

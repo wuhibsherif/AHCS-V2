@@ -1,0 +1,46 @@
+{% extends  'admission_and_discharge/homepage.html' %}
+
+{% block content %}
+      <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>List of Referral waiting for approval</h2>
+                        </div>
+                        <div class="body">
+                                    {% if referrals.all %}
+                              <div class="table-responsive">
+                                <table class="table m-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>From (Hospital)</th>
+                                            <th>Reason for referral</th>
+                                            <th>Referral Given Date</th>
+                                            <th>Status</th>
+                                            <th>Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for referral in referrals %}
+                                        <tr>
+                                            <td><span class="text-info">{{referral.referring_hospital.name}}</span></td>
+                                            <td>{{referral.reason_for_referral}}</td>
+                                            <td>{{referral.referral_date.date}}</td>
+                                            <td><span class="badge badge-success">{{referral.status}}</span></td>
+                                            <td><a href="{% url 'referral_detail_url' referral.id %}">
+                                                        <button type="button" class="btn btn-primary">View</button></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                                    {% else %}
+                                    <p><strong>No referral found for {{user_profile.basic.first_name}} </strong></p>
+                                    {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+ {% endblock %}
