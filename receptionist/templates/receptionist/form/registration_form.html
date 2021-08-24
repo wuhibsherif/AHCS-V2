@@ -17,22 +17,32 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>First Name</label>
-                      {{form.firstname.errors}}
+
                       {{form.firstname}}
+                         {% for error in form.firstname.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
+
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label>Middle Name</label>
-                        {{form.middlename.errors}}
+
                       {{form.middlename}}
+                        {% for error in form.middlename.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                     </div>
                   </div>
                   <div class="col-sm-4">
                       <div class="form-group">
                         <label>Last Name</label>
-                          {{form.lastname.errors}}
+
                         {{form.lastname}}
+                          {% for error in form.lastname.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                       </div>
                     </div>
                 </div>
@@ -41,8 +51,10 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>Age</label>
-                          {{form.age.errors}}
                         {{form.age}}
+                           {% for error in form.age.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                       </div>
                     </div>
                   <div class="col-sm-4">
@@ -76,15 +88,19 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label>Zone</label>
-                        {{form.zone.errors}}
                       {{form.zone}}
+                        {% for error in form.zone.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                     </div>
                   </div>
                   <div class="col-sm-4">
                       <div class="form-group">
                         <label>Woreda/Subcity</label>
-                          {{form.woreda.errors}}
                         {{form.woreda}}
+                          {% for error in form.woreda.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                       </div>
                     </div>
                 </div>
@@ -94,8 +110,11 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Kebele</label>
-                        {{form.kebele.errors}}
                       {{form.kebele}}
+                         {% for error in form.kebele.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
+
                     </div>
                   </div>
                   <div class="col-sm-4">
@@ -108,8 +127,10 @@
                   <div class="col-sm-4">
                       <div class="form-group">
                         <label>House No</label>
-                          {{form.house_no.errors}}
                         {{form.house_no}}
+                          {% for error in form.house_no.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                       </div>
                     </div>
                 </div>

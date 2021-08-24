@@ -12,32 +12,44 @@
 
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{form.firstname.errors}}
+
                                 <label class="ml-2">First Name</label>
                                 {{form.firstname}}
+                                {% for error in form.firstname.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{form.middlename.errors}}
+
                                 <label class="ml-2">Middle Name</label>
                                 {{form.middlename}}
+                                {% for error in form.middlename.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{form.lastname.errors}}
+
                                 <label>Last Name</label>
                                 {{form.lastname}}
+                                {% for error in form.lastname.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="row clearfix">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{form.age.errors}}
                                 <label>Age</label>
+
                                 {{form.age}}
+                                {% for error in form.age.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -108,16 +120,23 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {{form.zone.errors}}
+
                                     <label>Zone</label>
                                     {{form.zone}}
+                                {% for error in form.zone.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
+
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {{form.woreda.errors}}
+
                                     <label>Woreda/Subcity</label>
                                     {{form.woreda}}
+                                {% for error in form.woreda.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -126,17 +145,23 @@
                             <div class="col-sm-4">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    {{form.kebele.errors}}
+
                                     <label>Kebele</label>
                                     {{form.kebele}}
+                                {% for error in form.kebele.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {{form.house_no.errors}}
+
                                     <label>House No</label>
                                     {{form.house_no}}
+                                {% for error in form.house_no.errors %}
+                                <div class="alert alert-danger">{{error|escape}}</div>
+                                {% endfor %}
                                 </div>
                             </div>
                         </div>
