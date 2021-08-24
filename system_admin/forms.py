@@ -66,3 +66,6 @@ class HealthCareProviderRegistrationForm(forms.Form):
             )
             new_pharmacy_address.save()
             new_pharmacy.save()
+
+class Deletion_Form(forms.Form):
+    reason=forms.CharField(required=True,widget=forms.Textarea(attrs={"class":"form-control"}))

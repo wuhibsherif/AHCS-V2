@@ -12,9 +12,6 @@ from login.decorators import allowed_users
 from login.views import user_logout
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-# @login_required(login_url='login_url')
-# @decorators.nurseonly
 from patient.forms import VitalSignForm
 from patient.models import Patient
 from physician.models import PatientWaitingList

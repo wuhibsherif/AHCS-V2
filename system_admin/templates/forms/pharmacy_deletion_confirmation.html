@@ -1,0 +1,19 @@
+{% extends 'system_admin/homepage.html' %}
+
+{% block navlist %}
+    <li class="breadcrumb-item active">All Hospitals</li>
+{% endblock navlist%}
+
+{% block content %}
+<div> <h1>Confirm deletion </h1></div>
+<p>Are you want to delete {{pharmacy.name}} ?</p>
+<form method="Post" action="{% url 'delete_pharmacy_url' pharmacy.id%}">
+  {%csrf_token%}
+    <P>Please fill the reason for deletion in the form below before submitting </P>
+
+    <input type="submit" name="confirm" class="btn btn-danger">
+  <a href="{% url 'manage_hospitals_url'%}" class="btn btn-primary">Cancel</a>
+
+</form>
+
+{% endblock content %}

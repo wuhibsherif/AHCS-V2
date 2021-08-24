@@ -33,6 +33,7 @@ class Hospital(models.Model):
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    is_active=models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -43,6 +44,7 @@ class Pharmacy(models.Model):
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

@@ -29,7 +29,7 @@ def user_profile(request, pk):
         return render(request, 'profiles/system_admin_users_profile.html', context)
 
 @login_required(login_url='login_url')
-#@allowed_users(allowed_roles=['*'])
+#@allowed_users(allowed_roles=['Physician','system admin'])
 def my_profile(request, pk):
     profile = User.objects.get(id=pk)
     role = request.user.role
