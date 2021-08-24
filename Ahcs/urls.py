@@ -38,7 +38,7 @@ urlpatterns = [
                   path('profiles/', include('profiles.urls')),
                   path('system_admin/', include('system_admin.urls')),
                   path('searches/', include('searches.urls')),
-
+                  path('admission_and_discharge/', include('admission_and_discharge.urls')),
                   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 
