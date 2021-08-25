@@ -7,15 +7,15 @@ from receptionist.models import Triage
 
 
 class VitalSignForm(forms.Form):
-    weight = forms.IntegerField(required=True, widget=forms.TextInput(
+    weight = forms.IntegerField(required=True, widget=forms.NumberInput(
         attrs={'class': 'form-control', 'placeholder': 'weight here... '}))
-    height = forms.IntegerField(required=True, widget=forms.TextInput(
+    height = forms.IntegerField(required=True, widget=forms.NumberInput(
         attrs={'class': 'form-control', 'placeholder': 'height here... '}))
-    systolic_BP = forms.CharField(required=True, widget=forms.TextInput(
+    systolic_BP = forms.IntegerField(required=True, widget=forms.NumberInput(
         attrs={'class': 'form-control', 'placeholder': ' '}))
-    diastolic_BP = forms.CharField(required=True, widget=forms.TextInput(
+    diastolic_BP = forms.IntegerField(required=True, widget=forms.NumberInput(
         attrs={'class': 'form-control', 'placeholder': ''}))
-    temperature = forms.CharField(required=True, widget=forms.TextInput(
+    temperature = forms.IntegerField(required=True, widget=forms.NumberInput(
         attrs={'class': 'form-control', 'placeholder': ' '}))
     respiratory_rate = forms.CharField(required=True, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'h '}))
