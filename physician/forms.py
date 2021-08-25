@@ -24,7 +24,11 @@ class AddPatientForm(forms.Form):
         patient_form.save()
 
 
-class DateInput(forms.DateInput):
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
+
+class DateInput(forms.DateTimeInput):
     input_type = 'date'
 
 
@@ -37,13 +41,7 @@ def no_past(value):
 class AppointmentForm(forms.Form):
     case = forms.CharField(required=True, widget=forms.Textarea(attrs={"class": "form-control"}))
     appointment_date = forms.DateField(required=True, widget=DateInput, validators=[no_past])
-
-    def clean_appointment_date(self, *args, **kwargs):
-        value = self.cleaned_data.get('appointment_date')
-        today = date.today()
-        if value < today:
-            raise ValidationError('Appointment_Date cannot be in the past.')
-        return value
+    appointment_time = forms.TimeField(widget=TimeInput, required=True)
 
     def save_appointment(self, context):
         new_appointment = Appointment.objects.create(
@@ -51,6 +49,7 @@ class AppointmentForm(forms.Form):
             hospital_id=context['hospital'].id,
             patient_id=context['patient'].id,
             appointment_date=self.cleaned_data.get('appointment_date'),
+            appointment_time=self.cleaned_data.get('appointment_time'),
             booked_date=datetime.datetime.now(),
             case=self.cleaned_data.get('case'),
             status="pending")

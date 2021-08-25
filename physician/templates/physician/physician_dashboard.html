@@ -35,8 +35,8 @@
         <ul>
             <li><a href="{% url 'view_lab_result_waiting_list_url' %}">View lab result reports </a></li>
             <li><a href="{% url 'view_radiology_list_url'%}">View Radiology result reports</a></li>
-            <li><a href="payments-invoice.html">View medical history</a></li>
-            <li><a href="payments-invoice.html">View suggestion</a></li>
+            <li><a href="{% url 'view_suggestion_url' %}">View suggestion</a></li>
+            <li><a href="{% url 'view_appointment_url' %}">View Appointment</a></li>
         </ul>
       </li>
 {% endblock main_menu_list%}

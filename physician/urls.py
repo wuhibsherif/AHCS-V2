@@ -26,7 +26,10 @@ urlpatterns = [
     path('add_urine_analysis_request/<str:pk>/', views.add_urine_analysis_request, name='add_urine_analysis_request_url'),
     path('add_hematology_request/<str:pk>/', views.add_hematology_request, name='add_hematology_request_url'),
     path('add_appointment/<str:pk>/', views.add_appointment, name='add_appointment_url'),
+    path('view_appointment/', views.view_appointment, name='view_appointment_url'),
     path('medical_history/<str:pk>/', views.medical_history, name='medical_history_url'),
+    path('view_suggestion/', views.view_sugggestion, name='view_suggestion_url'),
+    path('check_disease/', views.checkdisease, name='check_disease_url'),
 
     # path('refer/<str:value>/', views.find_available_physician, name="find_available_physician_url"),
 ]

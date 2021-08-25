@@ -1,0 +1,49 @@
+{% extends  'physician/physician_dashboard.html' %}
+{% block content %}
+    <div class="row" >
+                        <div class="col-md-10">
+                          <div class="card card-primary ">
+                            <div class="card-header">
+                              <h5 class="card-title">View Appointments</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                {% if appointment.all %}
+                                <table class="table m-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>patient </th>
+                                            <th>Case</th>
+                                            <th>Appointment Given Date</th>
+                                            <th>Appointment Date</th>
+                                            <th>Appointment Time</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        {% for appointment in appointment %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td><span>{{appointment.patient.basic.first_name}} {{appointment.patient.basic.last_name}}</span></td>
+                                            <td><span class="text-info">{{appointment.case}}</span></td>
+                                            <td>{{appointment.booked_date}}</td>
+                                            <td>{{appointment.appointment_date}}</td>
+                                            <td>{{appointment.appointment_time}}</td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <label><p>You do not have any upcoming appointment</p></label>
+                                    {% endif %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+{% endblock content%}

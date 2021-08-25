@@ -68,6 +68,7 @@
                                             <th>Case</th>
                                             <th>Appointment Given Date</th>
                                             <th>Appointment Date</th>
+                                            <th>Appointment time</th>
 
                                         </tr>
                                     </thead>
@@ -81,6 +82,7 @@
                                             <td><span class="text-info">{{appointment.case}}</span></td>
                                             <td>{{appointment.booked_date}}</td>
                                             <td>{{appointment.appointment_date.date}}</td>
+                                            <td>{{appointment.appointment_time}}</td>
 
                                         </tr>
                                     {% endfor %}

@@ -1,5 +1,6 @@
 import re
 import unicodedata
+import phonenumbers
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -94,6 +95,81 @@ class UserRegistrationForm(forms.Form):
     role = forms.CharField(required=False, max_length=50, widget=forms.Select(choices=role_choices,
                                                                               attrs={'class': 'form-control',
                                                                                      'placeholder': 'Role here... '}))
+
+    def clean_firstname(self, *args, **kwargs):
+        firstname = self.cleaned_data.get('firstname')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if any(chr.isdigit() for chr in firstname):
+            raise forms.ValidationError("name can not contain number or character")
+        if (regex.search(firstname) != None):
+            raise forms.ValidationError("name can not contain number or character")
+        else:
+            return str(firstname)
+
+    def clean_middlename(self, *args, **kwargs):
+        middlename = self.cleaned_data.get('middlename')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if any(chr.isdigit() for chr in middlename):
+            raise forms.ValidationError("name can not contain number or character")
+        if (regex.search(middlename) != None):
+            raise forms.ValidationError("name can not contain number or character")
+        else:
+            return str(middlename)
+
+    def clean_lastname(self, *args, **kwargs):
+        lastname = self.cleaned_data.get('lastname')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if any(chr.isdigit() for chr in lastname):
+            raise forms.ValidationError("name can not contain number or character")
+        if (regex.search(lastname) != None):
+            raise forms.ValidationError("name can not contain number or character")
+        else:
+            return str(lastname)
+
+    ''' def clean_phone(self, *args, **kwargs):
+        phone = self.cleaned_data.get('phone')
+        z = phonenumbers.parse(phone, "ET")
+        if not phonenumbers.is_valid_number(z):
+            raise forms.ValidationError("In valid format")
+        return phone
+    '''
+    def clean_age(self, *args, **kwargs):
+        age = self.cleaned_data.get('age')
+        if age < 1 or age > 200:
+            raise forms.ValidationError("age can not be 0 or greater than 150")
+        return age
+
+    def clean_zone(self, *args, **kwargs):
+        zone = self.cleaned_data.get('zone')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if (regex.search(zone) != None):
+            raise forms.ValidationError("This is not a valid zone name")
+        if any(chr.isdigit() for chr in zone):
+            raise forms.ValidationError("This is not a valid zone name")
+
+        return zone
+
+    def clean_woreda(self, *args, **kwargs):
+        woreda = self.cleaned_data.get('woreda')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if (regex.search(woreda) != None):
+            raise forms.ValidationError("This is not valid name")
+
+        return woreda
+
+    def clean_kebele(self, *args, **kwargs):
+        kebele = self.cleaned_data.get('kebele')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if (regex.search(kebele) != None):
+            raise forms.ValidationError("This is not valid name")
+        return kebele
+
+    def clean_house_no(self, *args, **kwargs):
+        house_no = self.cleaned_data.get('house_no')
+        regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+        if (regex.search(house_no) != None):
+            raise forms.ValidationError("This is not valid name")
+        return house_no
 
     def save_patient(self, context):
         password = User.objects.make_random_password()
