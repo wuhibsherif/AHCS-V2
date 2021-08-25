@@ -283,3 +283,39 @@ class UserRegistrationForm(forms.Form):
         print(new_user.username, password)
         context = {'username': new_user.username, "password": password, "admin_id": new_user.id}
         return context
+    def update_admin(self, admin_type,pk):
+        hospital=Hospital.objects.get(id=pk)
+        password = User.objects.make_random_password()
+        count = User.objects.count()
+        new_user_address = Address.objects.create(
+            region=self.cleaned_data.get('region'),
+            zone=self.cleaned_data.get('zone'),
+            woreda=self.cleaned_data.get('woreda'),
+            kebele=self.cleaned_data.get('kebele'),
+            house_no=self.cleaned_data.get('house_no'),
+        )
+        full_name = self.cleaned_data.get('firstname') + ' ' + self.cleaned_data.get(
+            'lastname') + ' ' + self.cleaned_data.get('middlename')
+        username = (generate_username(full_name))
+        new_user = User.objects.create(
+            first_name=self.cleaned_data.get('firstname'),
+            last_name=self.cleaned_data.get('lastname'),
+            middle_name=self.cleaned_data.get('middlename'),
+            email=self.cleaned_data.get('email'),
+            sex=self.cleaned_data.get('sex'),
+            age=self.cleaned_data.get('age'),
+            address_id=new_user_address.id,
+            phone=self.cleaned_data.get('phone'),
+            username=username,
+            role=admin_type,
+
+        )
+
+        new_user.set_password(password)
+        hospital.admin_id=new_user.id
+        hospital.save()
+        new_user_address.save()
+        new_user.save()
+        print(new_user.username, password)
+        context = {'username': new_user.username, "password": password, "admin_id": new_user.id}
+        return context

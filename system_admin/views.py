@@ -99,7 +99,6 @@ def delete_pharamcy(request,pk):
     context={'pharmacy':pharmacy}
     return render(request, 'forms/pharmacy_deletion_confirmation.html', context)
 def hospital_detail(request,pk):
-
     if request.method=='POST':
         form=UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -115,3 +114,18 @@ def hospital_detail(request,pk):
     context={'hospital':hospital,'form':form}
     return render(request,'forms/hospital_detail.html',context)
 
+def pharmacy_detail(request,pk):
+    if request.method=='POST':
+        form=UserRegistrationForm(request.POST)
+        if form.is_valid():
+            admin_type = 'pharmacy admin'
+            admin = Pharmacy.objects.get(id=pk).admin
+            admin.is_active=False
+            admin.save()
+            form.update_admin(admin_type,pk)
+            return redirect('manage_pharmacy_url')
+    else:
+        form=UserRegistrationForm
+    pharmacy=Pharmacy.objects.get(id=pk)
+    context={'pharmacy':pharmacy,"form":form}
+    return render(request,'forms/pharmacy_detail.html',context)

@@ -37,7 +37,7 @@
                                             <td>{{pharmacy.address.region}}</td>
                                             <td>{{pharmacy.admin.first_name}} {{pharmacy.admin.first_name}}</td>
                                             <td>On service</td>
-                                            <td><a href="#"><button type="button" class="btn btn-primary">Edit</button></a> <a href="{% url 'delete_pharmacy_url' pharmacy.id%}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
+                                            <td><a href="{% url 'pharmacy_detail_url' pharmacy.id%}"><button type="button" class="btn btn-primary">Edit</button></a> <a href="{% url 'delete_pharmacy_url' pharmacy.id%}"><button type="button" class="btn btn-danger">Delete</button></a> </td>
 
 
                                         <tr>

@@ -44,7 +44,7 @@
                                             {% else %}
                                                 <td>Offline</td>
                                             {% endif %}
-                                            <td><a href="{% url 'user_profile_url' staff.basic.id%}"><button type="button" class="btn btn-primary">View Profile</button></a> </td>
+                                            <td><a href="{% url 'user_profile_url' staff.basic.id%}"><button type="button" class="btn btn-primary">View Profile</button></a> <a href="{% url 'delete_staff_url' staff.basic.id%}"><button type="button" class="btn btn-danger">Delete</button></a></td>
                                         
                                         <tr>
                                     {% endfor %}

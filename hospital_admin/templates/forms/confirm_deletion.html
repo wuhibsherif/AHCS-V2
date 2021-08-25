@@ -1,0 +1,19 @@
+{% extends 'hospital_admin/homepage.html' %}
+
+{% block navlist %}
+    <li class="breadcrumb-item active">All Hospitals</li>
+{% endblock navlist%}
+
+{% block content %}
+<div> <h1>Confirm deletion </h1></div>
+<p class="alert alert-danger">Are you want to delete {{user.first_name}} {{user.middle_name}} ?</p>
+<form method="Post" action="">
+  {%csrf_token%}
+
+
+    <input type="submit" name="confirm" class="btn btn-danger">
+  <a href="{% url 'all_users_url'%}" class="btn btn-primary">Cancel</a>
+
+</form>
+
+{% endblock content %}

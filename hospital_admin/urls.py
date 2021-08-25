@@ -12,6 +12,7 @@ urlpatterns = [
     path('all_nurses',views.all_nurses,name="all_nurses_url"),
     path('all_radiologists/', views.all_radiologists, name="all_radiologists_url"),
     path('all_lab_technicians/',views.all_lab_technicians,name="all_lab_technicians_url"),
+    path('delete_staff/<str:pk>/',views.delete_staff,name="delete_staff_url"),
     path('all_pharmacists/',views.all_pharmacists,name="all_pharmacists_url"),#path('user_profile/<str:pk>/',views.user_profile,name="user_profile_url"),
 
 

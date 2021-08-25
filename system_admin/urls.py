@@ -12,5 +12,6 @@ urlpatterns = [
     path('delete_hospital/<str:pk>/',views.delete_hospital,name='delete_hospital_url'),
     path('delete_pharmacy/<str:pk>/',views.delete_pharamcy,name='delete_pharmacy_url'),
     path('hospital_detail/<str:pk>/',views.hospital_detail,name='hospital_detail_url'),
+    path('pharmacy_detail/<str:pk>/',views.pharmacy_detail,name='pharmacy_detail_url'),
 
 ]

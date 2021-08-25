@@ -7,7 +7,7 @@
                             <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
                             <div>
 
-                                <h4 class="m-b-0"><strong>{{user_profile.basic.first_name}}</strong> {{user_profile.basic.last_name}}</h4>
+                                <h4 class="m-b-0">Patient Name: <strong>{{user_profile.basic.first_name}}</strong> {{user_profile.basic.last_name}}</h4>
                                 <span>{{ user_profile.basic.kebele }}</span>
                             </div>
                         </div>
@@ -17,21 +17,14 @@
                         <div class="header">
                             <h2>Info</h2>
                             <ul class="header-dropdown">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another Action</a></li>
-                                        <li><a href="javascript:void(0);">Something else</a></li>
-                                    </ul>
-                                </li>
+
                             </ul>
                         </div>
                         <div class="body">
-                            <small class="text-muted">Address: </small>
+                            <small class="text-muted">Address:Region Zone Woreda </small>
                             <p>{{user_profile.basic.address.region}},
                                 {{user_profile.basic.address.zone}},
-                                {{user_profile.basic.address.wereda}}</p>
+                                {{user_profile.basic.address.woreda}}</p>
                             <small class="text-muted">Age: </small>
                             <p>{{user_profile.basic.age}}</p>
                             <small class="text-muted">Email address: </small>
@@ -51,7 +44,7 @@
                             <ul class="nav nav-tabs-new2">
                                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#appointment">View Appointment</a></li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#referral">View Referral</a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#register">Register</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#register">Transfer to</a></li>
                             </ul>
                             <div class="tab-content mt-3">
 

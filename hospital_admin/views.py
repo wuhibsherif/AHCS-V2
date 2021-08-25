@@ -83,28 +83,28 @@ def all_users(request):
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['hospital admin'])
 def all_physicians(request):
-    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id)
+    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id).exclude(is_active=False)
     context = {'staff': staff}
     return render(request, 'forms/all-physicians.html', context)
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['hospital admin'])
 def all_nurses(request):
-    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id)
+    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id).exclude(is_active=False)
     context = {'staff': staff}
     return render(request, 'forms/all-nurses.html', context)
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['hospital admin'])
 def all_radiologists(request):
-    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id)
+    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id).exclude(is_active=False)
     context = {'staff': staff}
     return render(request, 'forms/all-radiologists.html', context)
 
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['hospital admin'])
 def all_lab_technicians(request):
-    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id)
+    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id).exclude(is_active=False)
     context = {'staff': staff}
     return render(request, 'forms/all-lab_technicians.html', context)
 
@@ -118,6 +118,16 @@ def all_pharmacists(request):
 @login_required(login_url='login_url')
 @allowed_users(allowed_roles=['hospital admin'])
 def all_receptionists(request):
-    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id)
+    staff = Staff.objects.filter(hospital_id=Hospital.objects.get(admin_id=request.user.id).id).exclude(is_active=False)
     context = {'receptionists': staff}
     return render(request, 'forms/all_receptionists.html', context)
+
+def delete_staff(request,pk):
+    user=User.objects.get(id=pk)
+    if request.method=="POST":
+        user.is_active=False
+        user.save()
+        return redirect('all_users_url')
+
+    context={'user':user}
+    return render(request,'forms/confirm_deletion.html',context)
