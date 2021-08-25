@@ -27,7 +27,7 @@ class VitalSignForm(forms.Form):
         attrs={'class': 'form-control', 'placeholder': ''}))
     blood_sugar_R = forms.CharField(required=True, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': ''}))
-    comment = forms.CharField(required=False, widget=forms.TextInput(
+    allergy = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': ''}))
 
     def save_vital_sign(self, context):
@@ -53,7 +53,7 @@ class VitalSignForm(forms.Form):
             blood_sugar_R=self.cleaned_data.get('blood_sugar_R'),
             blood_sugar_F=self.cleaned_data.get('blood_sugar_F'),
             taken_by_id=context['staff'].id,
-            comment=self.cleaned_data.get('comment'),
+            comment=self.cleaned_data.get('allergy'),
 
             taken_date=datetime.datetime.now(),
             taken_at_hospital_id=context['hospital'].id

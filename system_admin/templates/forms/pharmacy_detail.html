@@ -1,0 +1,236 @@
+{% extends 'system_admin/homepage.html' %}
+
+{% block navlist %}
+    <li class="breadcrumb-item active">Pharmacy Detail</li>
+{% endblock navlist%}
+
+{% block content %}
+<div class="container-fluid">
+
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="profile-image"> <img src="../assets/images/user.png" class="rounded-circle" alt=""> </div>
+                            <div>
+
+                                <h4 class="m-b-0"><strong>{{pharmacy.name}}</strong> </h4>
+                                <span>{{ user_profile.basic.kebele }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2>Info</h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another Action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <small class="text-muted">Address Zone Woreda</small>
+                            <p>{{pharmacy.address.region}},
+                                {{pharmacy.address.zone}},
+                                {{pharmacy.address.woreda}}</p>
+                            <small class="text-muted">Phone</small>
+                            <p>{{pharmacy.phone}}</p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="card">
+                        <div class="body">
+                            <ul class="nav nav-tabs-new2">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#appointment">Change pharmacy admin</a></li>
+
+                            </ul>
+                            <div class="tab-content mt-3">
+
+
+                                <div class="tab-pane active" id="appointment">
+                                    <form method="POST" action="">
+                                        {%csrf_token%}
+                                    <div class="body">
+                        <div class="row clearfix">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.firstname.errors}}
+                                    <label class="ml-2">First Name</label>
+                                    {{form.firstname}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.middlename.errors}}
+                                    <label class="ml-2">Middle Name</label>
+                                    {{form.middlename}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.lastname.errors}}
+                                    <label>Last Name</label>
+                                    {{form.lastname}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.age.errors}}
+                                    <label>Age</label>
+                                    {{form.age}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{form.sex.errors}}
+                                    <label class="ml-2">Sex</label>
+                                    {{form.sex}}
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="ml-2">Phone</label>
+                                    {{form.phone}}
+                                    {{form.phone.errors}}
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="ml-2">Email</label>
+                                    {{form.email}}
+                                    {{form.email.errors}}
+                                </div>
+                            </div>
+
+
+                        <br>
+                    </div>
+
+                    <div class="card">
+                        <div class="header bg-info">
+                            <h2 class="text-white">Admin's Address Information </h2>
+                        </div>
+                        <div class="body">
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Region</label>
+                                        {{form.region.errors}}
+                                        {{form.region}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{form.zone.errors}}
+                                        <label>Zone</label>
+                                        {{form.zone}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{form.woreda.errors}}
+                                        <label>Woreda/Subcity</label>
+                                        {{form.woreda}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        {{form.kebele.errors}}
+                                        <label>Kebele</label>
+                                        {{form.kebele}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        {{form.house_no.errors}}
+                                        <label>House No</label>
+                                        {{form.house_no}}
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    <div class="form-group col-md-4">
+                        <input class="btn btn-success" type="submit">
+                        <button class="btn btn--secondary" type="reset">Cancel</button>
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+                                        </form>
+                    </div>
+
+
+                                <div class="tab-pane" id="referral">
+                                    <div class="body">
+                              <div class="table-responsive">
+                                <table class="table m-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>By </th>
+                                            <th>From [pharmacy]</th>
+                                            <th>Referral Given Date</th>
+                                            <th>Action</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><span>Dr John</span></td>
+                                            <td><span class="text-info">Adama pharmacy and medical collage</span></td>
+                                            <td>Sept 13, 2017</td>
+                                            <td><input type="submit" class="btn btn-success" value="Accept"> <input type="submit" class="btn btn-danger" value="Reject"></td>
+                                            <td><span class="badge badge-success">Admit</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="register">
+                        <div class="body">
+                              <div class="table-responsive">
+                                  {% if registered %}
+                                  <p><strong>Patient is already in triage list</strong></p>
+                                  {% else %}
+                                  <a href="#"><button type="button" class="btn btn-primary">send to triage</button></a>
+                                  {% endif %}
+                              </div>
+                        </div>
+                    </div>
+                            </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+{% endblock content %}

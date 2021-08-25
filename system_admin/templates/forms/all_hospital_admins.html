@@ -44,8 +44,8 @@
                                             <td>{{user.admin.age}}</td>
                                             <td>{{user.admin.sex}}</td>
                                             <td>{{user}}</td>
-                                            {% if user.is_active %}
-                                                <td>Online</td>
+                                            {% if user.admin.is_authenticated %}
+                                                <td>online</td>
                                             {% else %}
                                                 <td>Offline</td>
                                             {% endif %}
