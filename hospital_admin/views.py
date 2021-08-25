@@ -131,3 +131,6 @@ def delete_staff(request,pk):
 
     context={'user':user}
     return render(request,'forms/confirm_deletion.html',context)
+def view_log(request):
+    context={}
+    return render(request,'forms/view_log.html',context)
