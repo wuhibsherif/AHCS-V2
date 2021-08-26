@@ -14,7 +14,7 @@ urlpatterns = [
     path('all_lab_technicians/',views.all_lab_technicians,name="all_lab_technicians_url"),
     path('delete_staff/<str:pk>/',views.delete_staff,name="delete_staff_url"),
     path('all_pharmacists/',views.all_pharmacists,name="all_pharmacists_url"),#path('user_profile/<str:pk>/',views.user_profile,name="user_profile_url"),
-    path('view_log/',views.view_log,name='view_log_url')
+
 
 
 

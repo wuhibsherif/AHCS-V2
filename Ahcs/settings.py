@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'system_admin',
     'rest_framework',
     'admission_and_discharge',
+    'api'
 
     
     
