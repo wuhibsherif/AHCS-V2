@@ -2,9 +2,9 @@ from datetime import timezone, datetime
 
 from django.db import models
 from accounts.models import Hospital, Staff
-from patient.models import Patient
-# Create your models here.
 
+# Create your models here.
+from patient.models import Patient
 
 
 class PatientWaitingList(models.Model):

@@ -1,10 +1,10 @@
 import datetime
 import os.path
-from accounts.models import User, Hospital, Staff, Pharmacy
+
 from django.db import models
 
 # Create your models here.
-
+from accounts.models import User, Hospital, Staff, Pharmacy
 
 
 class Patient(models.Model):
@@ -23,15 +23,15 @@ class VitalSign(models.Model):
     temperature = models.SmallIntegerField()
     systolic_BP = models.CharField(max_length=10)
     diastolic_BP = models.CharField(max_length=10)
-    respiratory_rate =models.CharField(max_length=10)
+    respiratory_rate = models.CharField(max_length=10)
     heart_rate = models.CharField(max_length=10)
     urine_output = models.CharField(max_length=10)
-    blood_sugar_R =models.CharField(max_length=10)
-    blood_sugar_F =models.CharField(max_length=10)
+    blood_sugar_R = models.CharField(max_length=10)
+    blood_sugar_F = models.CharField(max_length=10)
     taken_by = models.ForeignKey(Staff, on_delete=models.CASCADE)
     taken_date = models.DateTimeField()
     taken_at_hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    allergy = models.TextField()
+    comment = models.TextField()
 
 
 class PatientForm(models.Model):
@@ -56,7 +56,7 @@ class Prescription(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     prescription_detail = models.TextField()
     prescribed_by = models.ForeignKey(Staff, on_delete=models.CASCADE)
-    status =models.CharField(max_length=50, default='pending')
+    status = models.CharField(max_length=50, default='pending')
     pharmacy = models.ForeignKey(Pharmacy, on_delete=models.CASCADE, null=True)
     medication_name = models.CharField(max_length=150, null=True)
     frequency_perday = models.SmallIntegerField(null=True)
@@ -64,7 +64,7 @@ class Prescription(models.Model):
     start_date = models.DateTimeField(null=True)
     end_date = models.DateTimeField(null=True)
     bought_on_date = models.DateTimeField(null=True)
-    prescription_date =models.DateTimeField(auto_now_add=True)
+    prescription_date = models.DateTimeField(auto_now_add=True)
 
 
 def filepath(request, filename):
@@ -79,7 +79,7 @@ class UltraSound(models.Model):
     organ_to_be_examined = models.CharField(max_length=50)
     requested_by = models.ForeignKey(Staff, on_delete=models.CASCADE, related_name='ultrasound_requested_by')
     requested_to = models.ForeignKey(Staff, on_delete=models.CASCADE, related_name='ultrasound_requested_to')
-    hospital =models.ForeignKey(Hospital, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     date_of_request = models.DateTimeField(auto_now_add=True)
     ultra_sound_image = models.ImageField(upload_to='images/', blank=True, null=True)
     sonographic_report = models.TextField(null=True)
@@ -95,7 +95,7 @@ class XrayExamination(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     date_of_request = models.DateTimeField(auto_now_add=True)
     x_ray_image = models.ImageField(upload_to='images/', blank=True, null=True)
-    impressions =models.TextField(null=True)
+    impressions = models.TextField(null=True)
     requested_to = models.ForeignKey(Staff, on_delete=models.CASCADE, related_name='xray_requested_to')
     date_of_report = models.DateTimeField(null=True)
     status = models.CharField(max_length=50, default='pending')
@@ -117,10 +117,10 @@ class Hematology(models.Model):
     TWBC = models.CharField(max_length=50, null=True)
     differential = models.CharField(max_length=50, null=True)
     neutrophil = models.SmallIntegerField(null=True)
-    lymphocyte =models.SmallIntegerField(null=True)
+    lymphocyte = models.SmallIntegerField(null=True)
     eocynophil = models.SmallIntegerField(null=True)
     basophiles = models.SmallIntegerField(null=True)
-    monocyt =models.SmallIntegerField(null=True)
+    monocyt = models.SmallIntegerField(null=True)
     haemoglobin = models.SmallIntegerField(null=True)
     hemo_TCRIT = models.SmallIntegerField(null=True)
     MCV = models.SmallIntegerField(null=True)

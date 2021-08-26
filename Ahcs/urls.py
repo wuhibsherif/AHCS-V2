@@ -40,6 +40,7 @@ urlpatterns = [
                   path('searches/', include('searches.urls')),
                   path('admission_and_discharge/', include('admission_and_discharge.urls')),
                   path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+                  path('api/',include('api.urls')),
 
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
